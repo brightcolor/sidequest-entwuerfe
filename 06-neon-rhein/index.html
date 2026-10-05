@@ -1,0 +1,220 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>sidequest · Entwurf 6: Neon-Rhein</title>
+<link rel="stylesheet" href="../assets/fonts/fonts.css">
+<style>
+body{margin:0}
+.nr{--night:#0F0D24;--night2:#1B1745;--text:#F2EEFF;--dim:#B9B1DC;--pink:#FF4FA3;--onpink:#1A0614;--gold:#FFE27A;--line:#2E2860;--cell:#16133A;
+background:var(--night);color:var(--text);font-family:"Onest",system-ui,sans-serif;font-size:18px;line-height:1.6;min-height:100vh;display:flex;flex-direction:column}
+.nr.alt{--night:#F4F1FB;--night2:#E6E0F7;--text:#17132E;--dim:#4D4670;--pink:#C4196F;--onpink:#FFFFFF;--gold:#8A5D00;--line:#D3CCEA;--cell:#FFFFFF}
+.nr a{color:var(--text)}
+.nr :focus-visible{outline:3px solid var(--pink);outline-offset:3px}
+.nr-wrap{width:100%;max-width:1280px;margin:0 auto;padding:0 40px;box-sizing:border-box}
+.nr-uni{font-family:"Unbounded",system-ui,sans-serif}
+.nr-head{display:flex;align-items:center;justify-content:space-between;gap:8px 24px;min-height:80px;flex-wrap:wrap}
+.nr .nr-logo{font-family:"Unbounded",sans-serif;font-weight:700;font-size:22px;text-decoration:none;letter-spacing:-.01em}
+.nr-logo span{color:var(--pink)}
+.nr-nav{display:flex;gap:4px 28px;flex-wrap:wrap}
+.nr .nr-nav a{text-decoration:none;font-weight:500;font-size:16px;color:var(--dim);padding:10px 0}
+.nr .nr-nav a:hover{color:var(--text)}
+.nr-hero{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:48px;align-items:center;padding:40px 0 96px}
+.nr-h1{margin:0;font-family:"Unbounded",sans-serif;font-weight:700;font-size:60px;line-height:1.08;letter-spacing:-.02em;text-wrap:balance}
+.nr-h1 em{font-style:normal;color:var(--pink)}
+.nr-lead{margin:28px 0 36px;font-size:21px;color:var(--dim);max-width:30em}
+.nr .nr-btn{display:inline-flex;align-items:center;min-height:56px;padding:0 30px;background:var(--pink);color:var(--onpink);text-decoration:none;font-family:"Unbounded",sans-serif;font-weight:500;font-size:16px;border-radius:999px}
+.nr .nr-btn:hover{background:var(--text);color:var(--night)}
+.nr .nr-btn:active{transform:translateY(1px)}
+.nr-scene{position:relative;height:640px;border-radius:24px;overflow:hidden;background:radial-gradient(ellipse 80% 50% at 50% 100%,#3B1752 0%,transparent 70%),linear-gradient(#0B0920 0%,#17123E 70%,#24124A 100%)}
+.nr-scene::before{content:"";position:absolute;inset:0 0 140px;background-image:radial-gradient(#ffffff 1px,transparent 1.5px);background-size:46px 52px;background-position:12px 8px;opacity:.18}
+.nr-tower{position:absolute;left:50%;bottom:120px;width:160px;height:560px;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center}
+.nr-antenna{width:4px;height:96px;background:linear-gradient(#FF4FA3 0 6px,#C9C3E6 6px)}
+.nr-antbase{width:14px;height:26px;background:#C9C3E6}
+.nr-disk1{width:96px;height:14px;border-radius:50%;background:#D9D3F2}
+.nr-cabin{width:140px;height:46px;border-radius:22px;background:repeating-linear-gradient(90deg,#FFE27A 0 7px,#3A2C66 7px 11px);box-shadow:0 0 0 4px #D9D3F2 inset}
+.nr-disk2{width:104px;height:14px;border-radius:50%;background:#D9D3F2;margin-top:-2px}
+.nr-shaft{position:relative;width:62px;flex:1;background:linear-gradient(90deg,#9E97C4,#D9D3F2 45%,#8D86B8);clip-path:polygon(28% 0,72% 0,100% 100%,0 100%);display:flex;justify-content:center;padding-top:22px;box-sizing:border-box}
+.nr-clock{display:flex;flex-direction:column;align-items:center;gap:7px}
+.nr-group{display:flex;flex-direction:column;gap:3px}
+.nr-dot{width:6px;height:6px;border-radius:50%;background:#544C80}
+.nr-dot.an{background:#FFE27A;box-shadow:0 0 6px 1px rgba(255,226,122,.75)}
+.nr-dot.sep{background:#FF4FA3;box-shadow:0 0 6px 1px rgba(255,79,163,.7)}
+.nr-water{position:absolute;left:0;right:0;bottom:0;height:120px;background:linear-gradient(#24124A,#120B2C)}
+.nr-water::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(#FF4FA3 0 2px,transparent 2px 12px);opacity:.28;-webkit-mask-image:linear-gradient(transparent,#000 30%,transparent);mask-image:linear-gradient(transparent,#000 30%,transparent)}
+.nr-water::after{content:"";position:absolute;left:50%;top:6px;width:10px;height:96px;transform:translateX(-50%);background:repeating-linear-gradient(#FFE27A 0 3px,transparent 3px 9px);opacity:.55;filter:blur(1px)}
+.nr-caption{position:absolute;left:20px;right:20px;bottom:14px;margin:0;font-size:14px;color:#D8D2F4;text-align:center}
+.nr-caption b{font-family:"Unbounded",sans-serif;font-weight:500;color:#FFE27A;font-variant-numeric:tabular-nums}
+.nr-sec{padding:104px 0;border-top:1px solid var(--line)}
+.nr-h2{margin:0 0 44px;font-family:"Unbounded",sans-serif;font-weight:700;font-size:44px;line-height:1.1;letter-spacing:-.02em}
+.nr-bento{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));grid-auto-rows:minmax(230px,auto);gap:16px}
+.nr-cell{border-radius:20px;padding:28px 30px;background:var(--cell);border:1px solid var(--line);display:flex;flex-direction:column;justify-content:flex-end;gap:10px}
+.nr-cell h3{margin:0;font-family:"Unbounded",sans-serif;font-weight:500;font-size:22px;line-height:1.2}
+.nr-cell p{margin:0;color:var(--dim);font-size:17px}
+.nr-cell.gross{grid-row:span 2;background:var(--pink);color:var(--onpink);border-color:var(--pink)}
+.nr-cell.gross h3{font-size:34px;font-weight:700}
+.nr-cell.gross p{color:var(--onpink);font-size:20px;max-width:24em}
+.nr-cell.punkte{background-image:linear-gradient(transparent 0 38%,var(--cell) 38%),radial-gradient(var(--gold) 2px,transparent 2.5px);background-size:100% 100%,22px 22px;background-color:var(--cell)}
+.nr-cell.rand{border:2px solid var(--pink)}
+.nr-about{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,7fr);gap:56px;align-items:start}
+.nr-photo{aspect-ratio:4/5;border-radius:20px;border:2px dashed var(--line);display:grid;place-items:center;color:var(--dim);background:var(--cell);font-size:17px;text-align:center;padding:24px;box-sizing:border-box}
+.nr-about p{margin:0 0 18px;font-size:21px;max-width:32em}
+.nr-ufer{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr) 90px minmax(0,1fr);align-items:stretch;gap:0;border-radius:20px;overflow:hidden;border:1px solid var(--line)}
+.nr-ort{padding:36px 30px;background:var(--cell)}
+.nr-ort b{display:block;font-family:"Unbounded",sans-serif;font-weight:700;font-size:30px;margin-bottom:6px}
+.nr-ort span{color:var(--dim);font-size:16px}
+.nr-ort + .nr-ort{border-left:1px solid var(--line)}
+.nr-strom{background:linear-gradient(90deg,#2D2A8C,#FF4FA3 50%,#2D2A8C);display:grid;place-items:center}
+.nr-strom span{writing-mode:vertical-rl;font-family:"Unbounded",sans-serif;font-weight:500;font-size:15px;letter-spacing:.3em;color:#FFFFFF}
+.nr-contact{flex:1;padding:104px 0 0;border-top:1px solid var(--line);background:linear-gradient(var(--night),var(--night2))}
+.nr-contactgrid{display:grid;grid-template-columns:minmax(0,6fr) minmax(0,5fr);gap:56px;align-items:end}
+.nr-contact p{margin:0;font-size:21px;color:var(--dim);max-width:30em}
+.nr-contact .nr-phone{color:var(--text);font-family:"Unbounded",sans-serif;font-weight:700;font-size:44px;line-height:1.1;margin:0 0 8px}
+.nr-contact .nr-mail{margin:0 0 28px;font-size:20px}
+.nr-foot{margin-top:96px;padding:24px 0;border-top:1px solid var(--line);display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;font-size:15px;color:var(--dim)}
+.nr-foot nav{display:flex;gap:24px}
+@media (max-width:900px){
+.nr-wrap{padding:0 16px}
+.nr-hero,.nr-about,.nr-contactgrid{grid-template-columns:minmax(0,1fr);gap:36px}
+.nr-hero{padding:24px 0 64px}
+.nr-h1{font-size:36px}
+.nr-scene{height:560px}
+.nr-sec,.nr-contact{padding-top:72px}
+.nr-sec{padding-bottom:72px}
+.nr-h2{font-size:30px}
+.nr-bento{grid-template-columns:minmax(0,1fr);grid-auto-rows:auto}
+.nr-cell{min-height:180px}
+.nr-cell.gross{grid-row:auto}
+.nr-ufer{grid-template-columns:minmax(0,1fr)}
+.nr-strom{min-height:60px}
+.nr-strom span{writing-mode:horizontal-tb}
+.nr-ort + .nr-ort{border-left:0;border-top:1px solid var(--line)}
+.nr-photo{max-width:340px}
+.nr-contact .nr-phone{font-size:32px}
+}
+</style>
+</head>
+<body>
+<div class="nr" id="seite">
+<div class="nr-wrap">
+<header class="nr-head">
+<a class="nr-logo" href="#start">sidequest<span>.it</span></a>
+<nav class="nr-nav" aria-label="Hauptnavigation">
+<a href="#leistungen">Leistungen</a>
+<a href="#robert">Robert</a>
+<a href="#ufer">Gebiet</a>
+<a href="#kontakt">Kontakt</a>
+</nav>
+</header>
+</div>
+<main>
+<section id="start" class="nr-wrap nr-hero">
+<div>
+<h1 class="nr-h1">Düsseldorf hat eine Uhr aus Licht. <em>Du hast Robert.</em></h1>
+<p class="nr-lead">Robert hält in Neuss, Jüchen und Düsseldorf Rechner, Netzwerke, Mails und Webseiten am Laufen.</p>
+<a class="nr-btn" href="#kontakt">Robert anrufen</a>
+</div>
+<figure class="nr-scene" style="margin:0" aria-label="Zeichnung des Rheinturms mit der Lichtzeitpegel-Uhr, die die aktuelle Uhrzeit zeigt">
+<div class="nr-tower" aria-hidden="true">
+<div class="nr-antenna"></div>
+<div class="nr-antbase"></div>
+<div class="nr-disk1"></div>
+<div class="nr-cabin"></div>
+<div class="nr-disk2"></div>
+<div class="nr-shaft"><div class="nr-clock" id="nr-clock"></div></div>
+</div>
+<div class="nr-water" aria-hidden="true"></div>
+<figcaption class="nr-caption">Lichtzeitpegel am Rheinturm, gerade: <b id="nr-zeit">--:--:--</b></figcaption>
+</figure>
+</section>
+<section id="leistungen" class="nr-sec">
+<div class="nr-wrap">
+<h2 class="nr-h2">Woran Robert schraubt</h2>
+<div class="nr-bento">
+<div class="nr-cell gross"><h3>Netzwerk und WLAN</h3><p>Das Signal soll bis ins Lager reichen. Robert misst, wo es müde wird, setzt Router und Zugangspunkte und gibt Gästen ein eigenes Netz.</p></div>
+<div class="nr-cell punkte"><h3>Server und Datensicherung</h3><p>Sicherung an zwei Orten, die Wiederherstellung regelmäßig geprobt.</p></div>
+<div class="nr-cell"><h3>Rechner und Drucker</h3><p>Einrichten, Treiber pflegen, Updates einspielen.</p></div>
+<div class="nr-cell"><h3>E-Mail und Microsoft 365</h3><p>Postfächer, Kalender und Konten mit zweitem Faktor.</p></div>
+<div class="nr-cell rand"><h3>Webseiten und Hosting</h3><p>WordPress-Seiten bauen, pflegen und hosten, mit Texten, die nach dir klingen.</p></div>
+</div>
+</div>
+</section>
+<section id="robert" class="nr-sec">
+<div class="nr-wrap nr-about">
+<div class="nr-photo">[Foto von Robert]</div>
+<div>
+<h2 class="nr-h2">Robert, zwischen den Ufern</h2>
+<p>Robert arbeitet links und rechts vom Rhein. Er erklärt Technik in Bildern: Der Router ist ein Pförtner, der jeden Besucher kennt, die Sicherung ein Schließfach mit zwei Schlüsseln.</p>
+<p>Und wenn ihn jemand nach der Uhrzeit fragt, zeigt er auf den Rheinturm.</p>
+</div>
+</div>
+</section>
+<section id="ufer" class="nr-sec">
+<div class="nr-wrap">
+<h2 class="nr-h2">Wo Robert unterwegs ist</h2>
+<div class="nr-ufer">
+<div class="nr-ort"><b>Jüchen</b><span>Zwischen Schloss Dyck und Tagebau</span></div>
+<div class="nr-ort"><b>Neuss</b><span>Hafen, Innenstadt, linkes Ufer</span></div>
+<div class="nr-strom" aria-hidden="true"><span>RHEIN</span></div>
+<div class="nr-ort"><b>Düsseldorf</b><span>Rechtes Ufer, vom Hafen bis Benrath</span></div>
+</div>
+</div>
+</section>
+</main>
+<section id="kontakt" class="nr-contact">
+<div class="nr-wrap nr-contactgrid">
+<div>
+<h2 class="nr-h2">Licht an?</h2>
+<p>Ruf an oder schreib, wenn bei dir etwas flackert. Robert sagt dir, wie er vorgeht.</p>
+</div>
+<div>
+<p class="nr-phone">[TELEFON]</p>
+<p class="nr-mail"><a href="mailto:[E-MAIL]">[E-MAIL]</a></p>
+<a class="nr-btn" href="tel:[TELEFON]">Robert anrufen</a>
+</div>
+</div>
+<div class="nr-wrap">
+<footer class="nr-foot"><span>sidequest.it, IT-Hilfe in Neuss, Jüchen und Düsseldorf</span><nav aria-label="Rechtliches"><a href="#impressum">Impressum</a><a href="#datenschutz">Datenschutz</a></nav></footer>
+</div>
+</section>
+</div>
+<script>
+(function () {
+  var seite = document.getElementById('seite');
+  if (new URLSearchParams(location.search).get('modus') === 'alt') seite.classList.add('alt');
+
+  // Lichtzeitpegel: von oben Stundenzehner (2), Stundeneiner (9), Trenner,
+  // Minutenzehner (5), Minuteneiner (9), Trenner, Sekundenzehner (5), Sekundeneiner (9).
+  var aufbau = [2, 9, 0, 5, 9, 0, 5, 9];
+  var uhr = document.getElementById('nr-clock');
+  var gruppen = aufbau.map(function (anzahl) {
+    var g = document.createElement('div');
+    g.className = 'nr-group';
+    var n = anzahl || 1;
+    for (var i = 0; i < n; i++) {
+      var d = document.createElement('span');
+      d.className = anzahl ? 'nr-dot' : 'nr-dot sep';
+      g.append(d);
+    }
+    uhr.append(g);
+    return g;
+  });
+
+  function zeige() {
+    var t = new Date();
+    var z = [Math.floor(t.getHours() / 10), t.getHours() % 10, null, Math.floor(t.getMinutes() / 10), t.getMinutes() % 10, null, Math.floor(t.getSeconds() / 10), t.getSeconds() % 10];
+    z.forEach(function (wert, i) {
+      if (wert === null) return;
+      gruppen[i].querySelectorAll('.nr-dot').forEach(function (d, k) { d.classList.toggle('an', k < wert); });
+    });
+    function zwei(n) { return String(n).padStart(2, '0'); }
+    document.getElementById('nr-zeit').textContent = zwei(t.getHours()) + ':' + zwei(t.getMinutes()) + ':' + zwei(t.getSeconds());
+  }
+  zeige();
+  setInterval(zeige, 1000);
+})();
+</script>
+</body>
+</html>

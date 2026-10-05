@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>sidequest · Entwurf 9: Terminal auf Endlospapier</title>
+<link rel="stylesheet" href="../assets/fonts/fonts.css">
+<style>
+body{margin:0}
+.tm{--desk:#C9CEC6;--paper:#FBFCF6;--bar:#DDEDD6;--ink:#20281D;--soft:#4C5848;--red:#B3261E;--onred:#FFFFFF;--perf:#AEB4AB;
+background:var(--desk);color:var(--ink);font-family:"Courier Prime","Courier New",monospace;font-size:19px;line-height:24px;min-height:100vh;display:flex;flex-direction:column;align-items:center;padding:40px 0 0;box-sizing:border-box}
+.tm.alt{--desk:#070B08;--paper:#0D1510;--bar:#122017;--ink:#B4F0C2;--soft:#7FB18D;--red:#FF7A6E;--onred:#160403;--perf:#1C2A21}
+.tm a{color:var(--ink)}
+.tm :focus-visible{outline:3px solid var(--red);outline-offset:2px}
+.tm-strip{position:relative;width:min(1080px,100% - 32px);flex:1;display:grid;grid-template-columns:56px minmax(0,1fr) 56px;background:var(--paper);box-shadow:0 0 0 1px rgba(0,0,0,.05),0 20px 50px -20px rgba(0,0,0,.4)}
+.tm-holes{background-image:radial-gradient(circle at 50% 50%,var(--desk) 0 7px,transparent 7.5px);background-size:56px 36px;background-position:0 6px;border-inline:1px dashed var(--perf)}
+.tm-holes:first-child{border-left:0}
+.tm-holes:last-child{border-right:0}
+.tm-body{background-image:repeating-linear-gradient(var(--bar) 0 72px,var(--paper) 72px 144px);padding:24px 40px 0}
+.tm-vt{font-family:"VT323","Courier New",monospace;font-weight:400}
+.tm-headrow{display:flex;justify-content:space-between;gap:8px 24px;flex-wrap:wrap;text-transform:uppercase;font-size:16px;letter-spacing:.04em;min-height:48px;align-items:center}
+.tm-nav{display:flex;gap:4px 20px;flex-wrap:wrap}
+.tm .tm-nav a{padding:12px 0;text-decoration:none}
+.tm .tm-nav a:hover{text-decoration:underline}
+.tm-h1{margin:48px 0 24px;font-size:120px;line-height:96px}
+.tm-prompt{color:var(--soft)}
+.tm-prompt b{color:var(--red);font-weight:700}
+.tm-lead{margin:0 0 24px;font-size:21px;line-height:24px;max-width:46ch}
+.tm .tm-btn{display:inline-flex;align-items:center;min-height:48px;padding:0 20px;border:2px solid var(--red);color:var(--red);text-decoration:none;font-weight:700;text-transform:uppercase;letter-spacing:.06em;font-size:18px;background:var(--paper)}
+.tm .tm-btn:hover{background:var(--red);color:var(--onred)}
+.tm-console{margin:48px 0 0}
+.tm-cmds{display:flex;flex-wrap:wrap;gap:12px;margin:0 0 24px}
+.tm-cmd{all:unset;box-sizing:border-box;cursor:pointer;display:inline-flex;align-items:center;min-height:44px;padding:0 14px;border:2px solid var(--ink);background:var(--paper);font-family:"Courier Prime",monospace;font-size:17px}
+.tm-cmd:hover{background:var(--ink);color:var(--paper)}
+.tm-cmd.tm-rip{border-style:dashed;color:var(--soft);border-color:var(--soft)}
+.tm-log{margin:0;white-space:pre-wrap;font:inherit;line-height:24px;min-height:288px}
+.tm-log .p{color:var(--soft)}
+.tm-log .p b{color:var(--red)}
+.tm-log .e{color:var(--red)}
+.tm-sec{margin:72px 0 0}
+.tm-h2{margin:0 0 24px;font-size:64px;line-height:48px}
+.tm-h2::before{content:"## ";color:var(--soft);font-size:.55em}
+.tm-rows{margin:0;padding:0;list-style:none}
+.tm-rows li{display:grid;grid-template-columns:minmax(0,340px) minmax(0,1fr);gap:0 24px;min-height:48px;align-items:start}
+.tm-rows b{text-transform:uppercase;letter-spacing:.03em;display:flex;gap:8px;white-space:nowrap;overflow:hidden}
+.tm-rows b::after{content:" ................................................................";color:var(--soft);font-weight:400;overflow:hidden}
+.tm-about{display:grid;grid-template-columns:240px minmax(0,1fr);gap:32px;align-items:start}
+.tm-photo{height:288px;border:2px dashed var(--soft);display:grid;place-items:center;text-align:center;color:var(--soft);font-size:16px;padding:12px;box-sizing:border-box;background:var(--paper)}
+.tm-about p{margin:0 0 24px;max-width:56ch}
+.tm-tear{margin:72px -40px 0;padding:24px 40px;border-top:2px dashed var(--soft);display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-size:16px;color:var(--soft);text-transform:uppercase;letter-spacing:.04em}
+.tm-tear nav{display:flex;gap:20px}
+.tm-contact p{margin:0}
+.tm-contact .tm-big{font-size:56px;line-height:48px}
+@media (max-width:900px){
+.tm{padding-top:16px}
+.tm-strip{grid-template-columns:22px minmax(0,1fr) 22px;width:calc(100% - 16px)}
+.tm-holes{background-size:22px 36px;background-image:radial-gradient(circle at 50% 50%,var(--desk) 0 5px,transparent 5.5px)}
+.tm-body{padding:16px 16px 0}
+.tm-h1{font-size:72px;line-height:64px;margin-top:32px}
+.tm-lead{font-size:19px}
+.tm-h2{font-size:48px;line-height:40px}
+.tm-rows li{grid-template-columns:minmax(0,1fr);min-height:0;margin-bottom:24px}
+.tm-rows b::after{content:""}
+.tm-about{grid-template-columns:minmax(0,1fr)}
+.tm-photo{max-width:240px}
+.tm-tear{margin:56px -16px 0;padding:24px 16px}
+.tm-contact .tm-big{font-size:40px;line-height:40px}
+}
+</style>
+</head>
+<body>
+<div class="tm" id="seite">
+<div class="tm-strip">
+<div class="tm-holes" aria-hidden="true"></div>
+<div class="tm-body">
+<header class="tm-headrow">
+<a href="#start" style="text-decoration:none;font-weight:700">sidequest.it</a>
+<nav class="tm-nav" aria-label="Hauptnavigation">
+<a href="#konsole">konsole</a>
+<a href="#leistungen">leistungen</a>
+<a href="#robert">robert</a>
+<a href="#kontakt">kontakt</a>
+</nav>
+</header>
+<main>
+<section id="start">
+<p class="tm-prompt" style="margin:24px 0 0"><b>robert@sidequest</b>:~$ wer-hilft --in neuss,jüchen,düsseldorf</p>
+<h1 class="tm-h1 tm-vt">Sag mir, was klemmt.</h1>
+<p class="tm-lead">Robert hilft kleinen Betrieben in Neuss, Jüchen und Düsseldorf. Wähl unten einen Befehl, der Drucker antwortet.</p>
+<a class="tm-btn" href="#kontakt">Robert anrufen</a>
+</section>
+<section id="konsole" class="tm-console" aria-label="Konsole">
+<div class="tm-cmds" id="tm-cmds">
+<button type="button" class="tm-cmd" data-cmd="drucker">hilfe drucker</button>
+<button type="button" class="tm-cmd" data-cmd="wlan">hilfe wlan</button>
+<button type="button" class="tm-cmd" data-cmd="sicherung">hilfe sicherung</button>
+<button type="button" class="tm-cmd" data-cmd="mail">hilfe mail</button>
+<button type="button" class="tm-cmd" data-cmd="webseite">hilfe webseite</button>
+<button type="button" class="tm-cmd" data-cmd="robert">wer ist robert</button>
+<button type="button" class="tm-cmd" data-cmd="kontakt">kontakt</button>
+<button type="button" class="tm-cmd tm-rip" data-cmd="abreissen">papier abreißen</button>
+</div>
+<pre class="tm-log" id="tm-log" aria-live="polite"></pre>
+</section>
+<section id="leistungen" class="tm-sec">
+<h2 class="tm-h2 tm-vt">Leistungen</h2>
+<ul class="tm-rows">
+<li><b>Rechner und Drucker</b><span>Einrichten, Treiber pflegen, Updates einspielen.</span></li>
+<li><b>Netzwerk und WLAN</b><span>Router, Zugangspunkte, ein eigenes Netz für Gäste.</span></li>
+<li><b>Server und Sicherung</b><span>Sicherung an zwei Orten, Wiederherstellung geprobt.</span></li>
+<li><b>E-Mail und M365</b><span>Postfächer, Kalender, Konten mit zweitem Faktor.</span></li>
+<li><b>Webseiten</b><span>WordPress bauen, pflegen und hosten.</span></li>
+</ul>
+</section>
+<section id="robert" class="tm-sec">
+<h2 class="tm-h2 tm-vt">Robert</h2>
+<div class="tm-about">
+<div class="tm-photo">[Foto von Robert]</div>
+<div>
+<p>Robert erklärt Technik in Bildern. Bei ihm ist der Router ein Pförtner, der jeden Besucher kennt, und die Datensicherung ein Schließfach mit zwei Schlüsseln.</p>
+<p>Er arbeitet bei dir vor Ort oder per Fernwartung und schreibt dir am Ende auf, was er gemacht hat. Ausgedruckt, wenn du magst.</p>
+</div>
+</div>
+</section>
+<section id="kontakt" class="tm-sec tm-contact">
+<h2 class="tm-h2 tm-vt">Kontakt</h2>
+<p class="tm-big tm-vt">[TELEFON]</p>
+<p style="margin:24px 0">[E-MAIL]</p>
+<p style="margin:0 0 24px" class="tm-prompt">Unterwegs in Neuss, Jüchen, Düsseldorf und allem dazwischen.</p>
+<a class="tm-btn" href="tel:[TELEFON]">Robert anrufen</a>
+</section>
+</main>
+<footer class="tm-tear"><span>- - - hier abreißen - - -</span><nav aria-label="Rechtliches"><a href="#impressum">impressum</a><a href="#datenschutz">datenschutz</a></nav></footer>
+</div>
+<div class="tm-holes" aria-hidden="true"></div>
+</div>
+</div>
+<script>
+(function () {
+  var seite = document.getElementById('seite');
+  if (new URLSearchParams(location.search).get('modus') === 'alt') seite.classList.add('alt');
+  var log = document.getElementById('tm-log');
+  var antworten = {
+    drucker: ['Drucker und Rechner einrichten, Treiber pflegen, Updates einspielen.', 'Neue Geräte kommen startklar bei dir an.'],
+    wlan: ['Robert misst, wo das Signal müde wird,', 'setzt Router und Zugangspunkte', 'und gibt Gästen ein eigenes Netz.'],
+    sicherung: ['Sicherung an zwei Orten.', 'Die Wiederherstellung wird regelmäßig geprobt.', 'Server gewartet und überwacht.'],
+    mail: ['Postfächer, Kalender und Microsoft 365 einrichten und verwalten.', 'Anmeldung mit zweitem Faktor.'],
+    webseite: ['WordPress-Seiten bauen, pflegen und hosten,', 'mit Texten, die nach dir klingen.'],
+    robert: ['Robert. IT für kleine Betriebe.', 'Erklärt Technik in Bildern und kommt vorbei.'],
+    kontakt: ['Telefon: [TELEFON]', 'E-Mail:  [E-MAIL]']
+  };
+  var befehle = { drucker: 'hilfe drucker', wlan: 'hilfe wlan', sicherung: 'hilfe sicherung', mail: 'hilfe mail', webseite: 'hilfe webseite', robert: 'wer ist robert', kontakt: 'kontakt' };
+
+  function zeile(text, klasse) {
+    var z = document.createElement('span');
+    if (klasse) z.className = klasse;
+    z.textContent = text + '\n';
+    log.append(z);
+  }
+  function prompt(befehl) {
+    var z = document.createElement('span');
+    z.className = 'p';
+    var b = document.createElement('b'); b.textContent = 'robert@sidequest';
+    z.append(b, document.createTextNode(':~$ ' + befehl + '\n'));
+    log.append(z);
+  }
+  function start() {
+    log.textContent = '';
+    prompt('hilfe');
+    zeile('Befehle: drucker, wlan, sicherung, mail, webseite, robert, kontakt');
+    zeile('Unbekanntes Problem? Ruf an. Robert hört zu.', 'e');
+  }
+  document.getElementById('tm-cmds').addEventListener('click', function (e) {
+    var b = e.target.closest('button[data-cmd]');
+    if (!b) return;
+    var c = b.dataset.cmd;
+    if (c === 'abreissen') { start(); return; }
+    prompt(befehle[c]);
+    antworten[c].forEach(function (t) { zeile('> ' + t); });
+    while (log.childNodes.length > 24) log.removeChild(log.firstChild);
+  });
+  start();
+  ['drucker'].forEach(function (c) { prompt(befehle[c]); antworten[c].forEach(function (t) { zeile('> ' + t); }); });
+})();
+</script>
+</body>
+</html>

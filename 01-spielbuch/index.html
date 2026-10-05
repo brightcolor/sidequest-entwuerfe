@@ -1,0 +1,220 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>sidequest · Entwurf 1: Spielbuch</title>
+<link rel="stylesheet" href="../assets/fonts/fonts.css">
+<style>
+body{margin:0}
+.sb{--paper:#EDF0E7;--paper2:#E2E7DA;--ink:#1C231F;--soft:#475149;--stamp:#2B45C2;--onstamp:#F3F5EE;--rule:#C3CBBE;background:var(--paper);color:var(--ink);font-family:"Alegreya",Georgia,serif;font-size:19px;line-height:1.55;min-height:100vh;display:flex;flex-direction:column}
+.sb.alt{--paper:#141916;--paper2:#1C231F;--ink:#E4E9E0;--soft:#A5AFA6;--stamp:#93A6FF;--onstamp:#0F1430;--rule:#2E3731}
+.sb a{color:var(--stamp)}
+.sb a:hover{color:var(--ink)}
+.sb :focus-visible{outline:3px solid var(--stamp);outline-offset:3px}
+.sb-wrap{width:100%;max-width:1240px;margin:0 auto;padding:0 40px;box-sizing:border-box}
+.sb-sc{font-family:"Alegreya Sans SC","Gill Sans",sans-serif;font-weight:500;letter-spacing:.05em}
+.sb-head{border-bottom:1px solid var(--rule)}
+.sb-headin{display:flex;align-items:center;justify-content:space-between;gap:8px 24px;min-height:76px;flex-wrap:wrap}
+.sb .sb-logo{font-weight:800;font-style:italic;font-size:30px;color:var(--ink);text-decoration:none;letter-spacing:-.01em}
+.sb-nav{display:flex;gap:4px 28px;flex-wrap:wrap}
+.sb .sb-nav a{color:var(--ink);text-decoration:none;font-family:"Alegreya Sans SC",sans-serif;font-weight:500;font-size:18px;letter-spacing:.05em;padding:10px 0}
+.sb .sb-nav a:hover{color:var(--stamp)}
+.sb-hero{padding:56px 0 96px}
+.sb-herogrid{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:56px;align-items:stretch}
+.sb-cover{background:var(--stamp);color:var(--onstamp);padding:48px 44px;display:flex;flex-direction:column;gap:28px;min-height:580px;box-sizing:border-box}
+.sb-coverkick{margin:0;font-size:17px}
+.sb-title{margin:0;font-weight:800;font-style:italic;font-size:80px;line-height:1.04;letter-spacing:-.015em;text-wrap:balance;padding-bottom:4px}
+.sb-coverlead{margin:0;font-size:21px;line-height:1.45;max-width:30ch}
+.sb .sb-btn{margin-top:auto;align-self:flex-start;display:inline-flex;align-items:center;min-height:52px;padding:0 26px;background:var(--onstamp);color:var(--stamp);text-decoration:none;font-family:"Alegreya Sans SC",sans-serif;font-weight:700;font-size:19px;letter-spacing:.05em}
+.sb .sb-btn:hover{background:var(--ink);color:var(--paper)}
+.sb-page{border-top:3px solid var(--ink);padding-top:18px;display:flex;flex-direction:column}
+.sb-pagehead{display:flex;justify-content:space-between;font-size:16px;color:var(--soft)}
+.sb-num{margin:28px 0 12px;display:flex;align-items:baseline;gap:16px;color:var(--stamp)}
+.sb-numlabel{font-size:18px}
+.sb-numval{font-weight:800;font-style:italic;font-size:120px;line-height:.9}
+.sb-text{margin:0 0 32px;font-size:24px;line-height:1.5;max-width:34em;text-wrap:pretty;min-height:7.5em}
+.sb-choices{display:flex;flex-direction:column;border-bottom:1px solid var(--rule)}
+.sb-choice{all:unset;box-sizing:border-box;cursor:pointer;display:flex;justify-content:space-between;align-items:baseline;gap:24px;padding:16px 4px;border-top:1px solid var(--rule);font-size:21px;min-height:56px;font-family:"Alegreya",Georgia,serif}
+.sb-choicetext{font-style:italic}
+.sb-choicego{font-family:"Alegreya Sans SC",sans-serif;letter-spacing:.05em;font-size:17px;color:var(--soft);white-space:nowrap}
+.sb-choice:hover .sb-choicetext,.sb-choice:hover .sb-choicego{color:var(--stamp)}
+.sb-sec{padding:96px 0;border-top:1px solid var(--rule)}
+.sb-h2{margin:0 0 16px;font-weight:800;font-size:52px;line-height:1.08;letter-spacing:-.01em;text-wrap:balance}
+.sb-intro{margin:0 0 56px;font-size:22px;color:var(--soft);max-width:38em}
+.sb-series{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(460px,100%),1fr));gap:48px 72px;margin:0;padding:0;list-style:none}
+.sb-band{display:grid;grid-template-columns:76px minmax(0,1fr);gap:6px 20px;align-content:start}
+.sb-bandnr{grid-row:span 3;font-weight:800;font-style:italic;font-size:66px;line-height:1;color:var(--stamp)}
+.sb-band.aktuell .sb-bandnr{color:var(--soft)}
+.sb-bandcat{font-family:"Alegreya Sans SC",sans-serif;letter-spacing:.05em;font-size:16px;color:var(--soft)}
+.sb-bandtitle{margin:0;font-style:italic;font-weight:700;font-size:27px;line-height:1.2}
+.sb-bandtext{margin:0;font-size:19px}
+.sb-author{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,7fr);gap:64px;align-items:start}
+.sb-photo{aspect-ratio:4/5;border:2px dashed var(--rule);display:grid;place-items:center;color:var(--soft);background:var(--paper2);font-size:18px;text-align:center;padding:24px;box-sizing:border-box}
+.sb-authortext p{margin:0 0 20px;font-size:23px;line-height:1.55;max-width:32em}
+.sb-authortext .sb-first::first-letter{float:left;font-weight:800;font-style:italic;font-size:94px;line-height:.8;margin:10px 12px 0 0;color:var(--stamp)}
+.sb-places{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr));gap:40px;margin-top:40px}
+.sb-place h3{margin:0 0 8px;font-weight:800;font-style:italic;font-size:44px;line-height:1.1}
+.sb-place p{margin:0;font-size:20px;color:var(--soft)}
+.sb-contact{background:var(--paper2);flex:1;padding:96px 0 0;border-top:1px solid var(--rule)}
+.sb-contactgrid{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:56px;align-items:start}
+.sb-lines{display:grid;gap:10px;margin:28px 0 36px;font-size:24px}
+.sb-lines p{margin:0}
+.sb-lines span{color:var(--soft);font-family:"Alegreya Sans SC",sans-serif;letter-spacing:.05em;font-size:17px;display:block}
+.sb .sb-btn2{display:inline-flex;align-items:center;min-height:52px;padding:0 26px;background:var(--stamp);color:var(--onstamp);text-decoration:none;font-family:"Alegreya Sans SC",sans-serif;font-weight:700;font-size:19px;letter-spacing:.05em}
+.sb .sb-btn2:hover{background:var(--ink);color:var(--paper)}
+.sb-foot{margin-top:96px;border-top:1px solid var(--rule);padding:24px 0;display:flex;gap:24px;flex-wrap:wrap;justify-content:space-between;font-size:16px;color:var(--soft)}
+.sb-footlinks{display:flex;gap:24px}
+@media (max-width:900px){
+.sb-wrap{padding:0 20px}
+.sb-hero{padding:32px 0 64px}
+.sb-herogrid,.sb-author,.sb-contactgrid{grid-template-columns:minmax(0,1fr);gap:40px}
+.sb-cover{min-height:0;padding:36px 28px}
+.sb-title{font-size:52px}
+.sb-numval{font-size:88px}
+.sb-text{font-size:21px;min-height:0}
+.sb-choice{font-size:19px;flex-direction:column;gap:2px}
+.sb-sec{padding:64px 0}
+.sb-h2{font-size:38px}
+.sb-photo{max-width:360px}
+.sb-contact{padding-top:64px}
+}
+</style>
+</head>
+<body>
+<div class="sb" id="seite">
+<header class="sb-head">
+<div class="sb-wrap sb-headin">
+<a class="sb-logo" href="#start">sidequest</a>
+<nav class="sb-nav" aria-label="Hauptnavigation">
+<a href="#reihe">Bände</a>
+<a href="#autor">Robert</a>
+<a href="#orte">Schauplätze</a>
+<a href="#kontakt">Kontakt</a>
+</nav>
+</div>
+</header>
+<main>
+<section id="start" class="sb-hero">
+<div class="sb-wrap sb-herogrid">
+<div class="sb-cover">
+<p class="sb-sc sb-coverkick">Ein IT-Abenteuer, in dem du entscheidest</p>
+<h1 class="sb-title">Der Drucker im Flur</h1>
+<p class="sb-coverlead">IT-Hilfe für kleine Betriebe in Neuss, Jüchen und Düsseldorf. Erzählt und repariert von Robert.</p>
+<a class="sb-btn" href="#kontakt">Robert anrufen</a>
+</div>
+<div class="sb-page" aria-live="polite">
+<div class="sb-pagehead sb-sc"><span>sidequest</span><span>Band 1</span></div>
+<p class="sb-num"><span class="sb-sc sb-numlabel">Abschnitt</span><span class="sb-numval" id="sb-nr">1</span></p>
+<p class="sb-text" id="sb-text">Montag, 8:14 Uhr. Im Flur blinkt der Drucker orange, wie ein Leuchtturm, der vergessen hat, wovor er warnen soll. Auf dem Display steht ein Code, den im Büro noch nie jemand gesehen hat. Bis mittags müssen drei Angebote raus.</p>
+<div class="sb-choices" id="sb-wahl">
+<button type="button" class="sb-choice" data-ziel="4"><span class="sb-choicetext">Du drückst alle Knöpfe gleichzeitig.</span><span class="sb-choicego">weiter bei 4</span></button>
+<button type="button" class="sb-choice" data-ziel="9"><span class="sb-choicetext">Du ziehst den Stecker und zählst bis zehn.</span><span class="sb-choicego">weiter bei 9</span></button>
+<button type="button" class="sb-choice" data-ziel="17"><span class="sb-choicetext">Du rufst Robert an.</span><span class="sb-choicego">weiter bei 17</span></button>
+</div>
+</div>
+</div>
+</section>
+<section id="reihe" class="sb-sec">
+<div class="sb-wrap">
+<h2 class="sb-h2">Weitere Bände der Reihe</h2>
+<p class="sb-intro">Jeder Band ist ein Problem, das Robert schon oft gelöst hat. Jeden davon spielt er mit dir bis zum guten Ende durch.</p>
+<ul class="sb-series">
+<li class="sb-band aktuell"><span class="sb-bandnr">1</span><span class="sb-bandcat">Rechner und Drucker</span><p class="sb-bandtitle">Der Drucker im Flur</p><p class="sb-bandtext">Drucker und Rechner einrichten, Treiber pflegen, Updates einspielen. Du liest ihn gerade.</p></li>
+<li class="sb-band"><span class="sb-bandnr">2</span><span class="sb-bandcat">Netzwerk und WLAN</span><p class="sb-bandtitle">Das WLAN, das an der Kaffeemaschine endet</p><p class="sb-bandtext">Robert misst aus, wo das Signal schwach wird, setzt Router und Zugangspunkte und gibt Gästen ein eigenes Netz.</p></li>
+<li class="sb-band"><span class="sb-bandnr">3</span><span class="sb-bandcat">Server und Datensicherung</span><p class="sb-bandtitle">Die Festplatte in der Schreibtischschublade</p><p class="sb-bandtext">Sicherungen an zwei Orten, die Wiederherstellung regelmäßig geprobt, Server gewartet.</p></li>
+<li class="sb-band"><span class="sb-bandnr">4</span><span class="sb-bandcat">E-Mail und Microsoft 365</span><p class="sb-bandtitle">Outlook vergisst dich jeden Morgen</p><p class="sb-bandtext">Postfächer, Kalender und Konten sauber eingerichtet und mit einem zweiten Faktor geschützt.</p></li>
+<li class="sb-band"><span class="sb-bandnr">5</span><span class="sb-bandcat">Rechner</span><p class="sb-bandtitle">Der Rechner, der beim Hochfahren seufzt</p><p class="sb-bandtext">Neue Geräte startklar übergeben, alte aufräumen, Software aktuell halten.</p></li>
+<li class="sb-band"><span class="sb-bandnr">6</span><span class="sb-bandcat">Webseiten und Hosting</span><p class="sb-bandtitle">Die Webseite aus dem Jahr 2014</p><p class="sb-bandtext">WordPress-Seiten bauen, pflegen und sicher hosten, mit Texten, die nach dir klingen.</p></li>
+</ul>
+</div>
+</section>
+<section id="autor" class="sb-sec">
+<div class="sb-wrap sb-author">
+<div class="sb-photo">[Foto von Robert]</div>
+<div class="sb-authortext">
+<h2 class="sb-h2">Über den Autor</h2>
+<p class="sb-first">Robert repariert die IT kleiner Betriebe zwischen Jüchen und Düsseldorf. Dabei erklärt er Technik so, dass man sie vor sich sieht: Der Router ist bei ihm ein Pförtner, der jeden Besucher kennt. Die Datensicherung ist ein Schließfach im Keller, zu dem es zwei Schlüssel gibt.</p>
+<p>Er kommt vorbei, lässt sich die Geschichte von vorn erzählen und bleibt dran, bis sie ein gutes Ende hat.</p>
+</div>
+</div>
+</section>
+<section id="orte" class="sb-sec">
+<div class="sb-wrap">
+<h2 class="sb-h2">Schauplätze</h2>
+<div class="sb-places">
+<div class="sb-place"><h3>Neuss</h3><p>Zwischen Hafen und Quirinus-Münster.</p></div>
+<div class="sb-place"><h3>Jüchen</h3><p>Zwischen Schloss Dyck und dem Rand des Tagebaus.</p></div>
+<div class="sb-place"><h3>Düsseldorf</h3><p>Vom Rheinturm bis nach Benrath, und alles dazwischen.</p></div>
+</div>
+</div>
+</section>
+</main>
+<section id="kontakt" class="sb-contact">
+<div class="sb-wrap sb-contactgrid">
+<div>
+<p class="sb-num"><span class="sb-sc sb-numlabel">Abschnitt</span><span class="sb-numval">17</span></p>
+</div>
+<div>
+<h2 class="sb-h2">Hier geht deine Geschichte weiter.</h2>
+<p class="sb-intro">Ruf Robert an und erzähl ihm, an welcher Stelle du gerade feststeckst. Den Rest schreibt ihr zusammen.</p>
+<div class="sb-lines">
+<p><span>Telefon</span>[TELEFON]</p>
+<p><span>E-Mail</span>[E-MAIL]</p>
+</div>
+<a class="sb-btn2" href="tel:[TELEFON]">Robert anrufen</a>
+</div>
+</div>
+<div class="sb-wrap">
+<footer class="sb-foot"><span>sidequest.it, IT-Hilfe in Neuss, Jüchen und Düsseldorf</span><span class="sb-footlinks"><a href="#impressum">Impressum</a><a href="#datenschutz">Datenschutz</a></span></footer>
+</div>
+</section>
+</div>
+<script>
+(function () {
+  var seite = document.getElementById('seite');
+  if (new URLSearchParams(location.search).get('modus') === 'alt') seite.classList.add('alt');
+
+  var abschnitte = {
+    '1': { text: 'Montag, 8:14 Uhr. Im Flur blinkt der Drucker orange, wie ein Leuchtturm, der vergessen hat, wovor er warnen soll. Auf dem Display steht ein Code, den im Büro noch nie jemand gesehen hat. Bis mittags müssen drei Angebote raus.',
+      wahl: [['Du drückst alle Knöpfe gleichzeitig.', '4'], ['Du ziehst den Stecker und zählst bis zehn.', '9'], ['Du rufst Robert an.', '17']] },
+    '4': { text: 'Der Drucker holt tief Luft und legt los: eine Testseite, dann noch eine, dann noch eine. Nach der neunzigsten ist das Papierfach leer, und der Code ist wieder da. Diesmal in Rot.',
+      wahl: [['Du ziehst doch den Stecker.', '9'], ['Du rufst Robert an.', '17']] },
+    '9': { text: 'Zehn Sekunden Stille. Dann erwacht der Drucker, summt zufrieden und zeigt dir denselben Code wie vorher, jetzt mit Ausrufezeichen. Aus dem Nachbarbüro ruft jemand, ob die Angebote schon draußen sind.',
+      wahl: [['Du fängst noch einmal von vorn an.', '1'], ['Du rufst Robert an.', '17']] },
+    '17': { text: 'Robert lässt sich den Code vorlesen, stellt drei Fragen und schaltet sich auf den Rechner, der die Druckaufträge verteilt. Ein Treiber hat sich über Nacht selbst aktualisiert. Um 9:02 Uhr druckt der Flur wieder, und Robert erklärt dir in zwei Sätzen, was passiert ist.',
+      wahl: [['Du speicherst dir Roberts Nummer.', 'kontakt'], ['Du spielst noch einmal von vorn.', '1']] }
+  };
+
+  var nr = document.getElementById('sb-nr');
+  var text = document.getElementById('sb-text');
+  var wahl = document.getElementById('sb-wahl');
+
+  function zeige(ziel) {
+    if (ziel === 'kontakt') { document.getElementById('kontakt').scrollIntoView({ behavior: 'smooth' }); return; }
+    var a = abschnitte[ziel];
+    nr.textContent = ziel;
+    text.textContent = a.text;
+    wahl.textContent = '';
+    a.wahl.forEach(function (w) {
+      var b = document.createElement('button');
+      b.type = 'button';
+      b.className = 'sb-choice';
+      b.dataset.ziel = w[1];
+      var t = document.createElement('span'); t.className = 'sb-choicetext'; t.textContent = w[0];
+      var g = document.createElement('span'); g.className = 'sb-choicego'; g.textContent = w[1] === 'kontakt' ? 'weiter beim Kontakt' : 'weiter bei ' + w[1];
+      b.append(t, g);
+      wahl.append(b);
+    });
+    wahl.querySelector('button').focus({ preventScroll: true });
+  }
+
+  wahl.addEventListener('click', function (e) {
+    var b = e.target.closest('button[data-ziel]');
+    if (b) zeige(b.dataset.ziel);
+  });
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>sidequest · Entwurf 2: Trailer</title>
+<link rel="stylesheet" href="../assets/fonts/fonts.css">
+<style>
+body{margin:0}
+.tr{--night:#0D0B10;--night2:#16121B;--screen:#F3EEE6;--amber:#F2A93B;--dim:#B3AAA0;--line:#2C2731;--velvet:#4E0F1C;--onvelvet:#F3EEE6;--bar:#060508;
+background:var(--night);color:var(--screen);font-family:"Instrument Sans",system-ui,sans-serif;font-size:18px;line-height:1.55;min-height:100vh;display:flex;flex-direction:column}
+.tr.alt{--night:#F2ECE2;--night2:#E8E0D3;--screen:#18141C;--amber:#8C4A00;--dim:#574E46;--line:#D3C9BB;--velvet:#6E1526}
+.tr a{color:var(--amber)}
+.tr :focus-visible{outline:3px solid var(--amber);outline-offset:3px}
+.tr-wrap{width:100%;max-width:1280px;margin:0 auto;padding:0 40px;box-sizing:border-box}
+.tr-display{font-family:"League Gothic","Oswald",Impact,sans-serif;font-weight:400;text-transform:uppercase;letter-spacing:.01em}
+.tr-bar{background:var(--bar);color:#E9E3DA;min-height:64px;display:flex;align-items:center}
+.tr-barin{display:flex;justify-content:space-between;align-items:center;gap:8px 24px;flex-wrap:wrap;width:100%}
+.tr .tr-logo{font-family:"League Gothic",Impact,sans-serif;font-size:30px;letter-spacing:.06em;color:#F3EEE6;text-decoration:none;text-transform:uppercase}
+.tr-nav{display:flex;gap:4px 28px;flex-wrap:wrap}
+.tr .tr-nav a{color:#D9D2C8;text-decoration:none;font-size:15px;letter-spacing:.12em;text-transform:uppercase;padding:10px 0}
+.tr .tr-nav a:hover{color:#F2A93B}
+.tr-hero{background:radial-gradient(ellipse 70% 60% at 50% 45%,var(--night2) 0%,var(--night) 75%);min-height:720px;display:flex;align-items:center;text-align:center;padding:72px 0}
+.tr-kick{margin:0 0 28px;font-size:16px;letter-spacing:.32em;text-transform:uppercase;color:var(--dim)}
+.tr-title{margin:0;font-size:176px;line-height:.88}
+.tr-title span{display:block}
+.tr-l2{color:var(--amber)}
+.tr-sub{margin:36px auto 0;max-width:34ch;font-size:22px;color:var(--dim)}
+.tr-ctas{margin-top:40px;display:flex;gap:16px 32px;justify-content:center;align-items:center;flex-wrap:wrap}
+.tr .tr-btn{display:inline-flex;align-items:center;min-height:56px;padding:0 34px;background:var(--amber);color:var(--night);text-decoration:none;font-family:"League Gothic",Impact,sans-serif;font-size:28px;letter-spacing:.06em;text-transform:uppercase}
+.tr.alt .tr-btn{color:#FFF8EE}
+.tr .tr-btn:hover{background:var(--screen);color:var(--night)}
+.tr .tr-link{color:var(--screen);font-size:16px;letter-spacing:.14em;text-transform:uppercase;text-underline-offset:6px}
+.tr-reel{border-top:1px solid var(--line)}
+.tr-card{min-height:300px;display:flex;align-items:center;border-bottom:1px solid var(--line)}
+.tr-card p{margin:0;font-size:46px;line-height:1.22;font-weight:600;letter-spacing:-.01em;max-width:24ch;text-wrap:balance}
+.tr-card:nth-child(2) .tr-wrap{display:flex;justify-content:flex-end;text-align:right}
+.tr-card:nth-child(3) .tr-wrap{display:flex;justify-content:center;text-align:center}
+.tr-card .tr-pause{font-family:"League Gothic",Impact,sans-serif;text-transform:uppercase;font-weight:400;font-size:64px;letter-spacing:.04em;color:var(--dim)}
+.tr-name{min-height:460px;background:var(--bar);color:#F3EEE6;text-align:center;border:0}
+.tr-name .tr-wrap{display:flex;flex-direction:column;align-items:center;gap:18px}
+.tr-name .tr-big{font-family:"League Gothic",Impact,sans-serif;font-size:260px;line-height:.85;letter-spacing:.02em;text-transform:uppercase;color:#F2A93B;max-width:none}
+.tr-name .tr-tag{font-size:26px;font-weight:400;color:#D9D2C8;max-width:none}
+.tr-sec{padding:112px 0}
+.tr-h2{margin:0 0 56px;font-size:96px;line-height:.9}
+.tr-cast{display:grid;gap:0;margin:0;padding:0;list-style:none}
+.tr-cast li{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:12px 48px;padding:26px 0;border-top:1px dotted var(--dim);align-items:baseline}
+.tr-cast li:last-child{border-bottom:1px dotted var(--dim)}
+.tr-role{font-family:"League Gothic",Impact,sans-serif;text-transform:uppercase;font-size:44px;line-height:1;letter-spacing:.02em}
+.tr-role em{font-style:normal;color:var(--amber)}
+.tr-cast p{margin:0;font-size:20px;color:var(--dim)}
+.tr-orte{background:var(--velvet);color:var(--onvelvet);padding:112px 0}
+.tr-orte .tr-h2{color:var(--onvelvet)}
+.tr-orte .tr-ortliste{display:flex;flex-wrap:wrap;gap:8px 56px;font-size:150px;line-height:.9}
+.tr-orte p.tr-ortnote{margin:40px 0 0;font-size:22px;opacity:.9}
+.tr-contact{flex:1;padding:112px 0 0;text-align:center}
+.tr-contact .tr-h2{margin-bottom:24px}
+.tr-contact .tr-lead{margin:0 auto 40px;max-width:34ch;font-size:22px;color:var(--dim)}
+.tr-phone{font-family:"League Gothic",Impact,sans-serif;font-size:88px;line-height:1;color:var(--amber);letter-spacing:.03em;margin:0}
+.tr-mail{margin:16px 0 48px;font-size:22px}
+.tr-billing{margin:112px auto 0;max-width:980px;font-family:"League Gothic",Impact,sans-serif;font-stretch:75%;text-transform:uppercase;font-size:25px;line-height:1.08;letter-spacing:.03em;color:var(--dim);text-wrap:balance}
+.tr-billing b{font-weight:400;color:var(--screen)}
+.tr-foot{margin-top:48px;padding:24px 0 40px;display:flex;justify-content:center;gap:28px;font-size:15px;letter-spacing:.12em;text-transform:uppercase}
+@media (prefers-reduced-motion:no-preference){
+.tr-l1{animation:tr-rise 1s cubic-bezier(.16,1,.3,1) both}
+.tr-l2{animation:tr-rise 1s .55s cubic-bezier(.16,1,.3,1) both}
+.tr-sub,.tr-ctas{animation:tr-fade .8s 1.2s both}
+}
+@keyframes tr-rise{from{opacity:0;transform:translateY(32px)}to{opacity:1;transform:none}}
+@keyframes tr-fade{from{opacity:0}to{opacity:1}}
+@media (max-width:900px){
+.tr-wrap{padding:0 20px}
+.tr-hero{min-height:0;padding:56px 0 64px}
+.tr-title{font-size:84px}
+.tr-sub{font-size:19px}
+.tr-card{min-height:220px}
+.tr-card p{font-size:30px}
+.tr-card .tr-pause{font-size:44px}
+.tr-name{min-height:300px}
+.tr-name .tr-big{font-size:130px}
+.tr-name .tr-tag{font-size:20px}
+.tr-sec,.tr-orte{padding:72px 0}
+.tr-h2{font-size:64px;margin-bottom:32px}
+.tr-cast li{grid-template-columns:minmax(0,1fr)}
+.tr-role{font-size:36px}
+.tr-orte .tr-ortliste{font-size:72px;gap:4px 28px}
+.tr-phone{font-size:60px}
+.tr-billing{font-size:20px}
+}
+</style>
+</head>
+<body>
+<div class="tr" id="seite">
+<header class="tr-bar">
+<div class="tr-wrap tr-barin">
+<a class="tr-logo" href="#start">sidequest.it</a>
+<nav class="tr-nav" aria-label="Hauptnavigation">
+<a href="#trailer">Trailer</a>
+<a href="#besetzung">Besetzung</a>
+<a href="#drehorte">Drehorte</a>
+<a href="#kontakt">Kontakt</a>
+</nav>
+</div>
+</header>
+<main>
+<section id="start" class="tr-hero">
+<div class="tr-wrap">
+<p class="tr-kick">sidequest.it präsentiert</p>
+<h1 class="tr-title tr-display"><span class="tr-l1">Der Drucker streikt.</span><span class="tr-l2">Robert übernimmt.</span></h1>
+<p class="tr-sub">IT-Hilfe für kleine Betriebe in Neuss, Jüchen und Düsseldorf. Rechner, Netzwerk, Mail und Webseiten.</p>
+<div class="tr-ctas"><a class="tr-btn" href="#kontakt">Robert anrufen</a><a class="tr-link" href="#trailer">Zum Trailer</a></div>
+</div>
+</section>
+<section id="trailer" class="tr-reel" aria-label="Trailer">
+<div class="tr-card"><div class="tr-wrap"><p>Ein Büro in Neuss. Zwölf Rechner. Und ein WLAN, das an der Glastür aufgibt.</p></div></div>
+<div class="tr-card"><div class="tr-wrap"><p>In Jüchen liegt die einzige Datensicherung in einer Schreibtischschublade. Seit Jahren.</p></div></div>
+<div class="tr-card"><div class="tr-wrap"><p>In Düsseldorf fragt Outlook jeden Morgen nach dem Kennwort, als hätte es alle vergessen.</p></div></div>
+<div class="tr-card"><div class="tr-wrap"><p class="tr-pause">Dann klingelt das Telefon.</p></div></div>
+<div class="tr-card tr-name"><div class="tr-wrap"><p class="tr-big">Robert</p><p class="tr-tag">Deine Geschichte. Seine Sidequest.</p></div></div>
+</section>
+<section id="besetzung" class="tr-sec">
+<div class="tr-wrap">
+<h2 class="tr-h2 tr-display">Die Besetzung</h2>
+<ul class="tr-cast">
+<li><span class="tr-role">Robert <em>als</em> der Druckerflüsterer</span><p>Rechner und Drucker einrichten, Treiber pflegen, Updates einspielen.</p></li>
+<li><span class="tr-role">Robert <em>als</em> der Netzwerk-Architekt</span><p>WLAN bis ins Lager, Router, Firewall und ein eigenes Netz für Gäste.</p></li>
+<li><span class="tr-role">Robert <em>als</em> der Hüter der Sicherung</span><p>Sicherungen an zwei Orten, die Wiederherstellung geprobt, Server gewartet.</p></li>
+<li><span class="tr-role">Robert <em>als</em> der Postmeister</span><p>E-Mail, Kalender und Microsoft 365, eingerichtet und mit zweitem Faktor geschützt.</p></li>
+<li><span class="tr-role">Robert <em>als</em> der Bühnenbildner</span><p>WordPress-Webseiten bauen, pflegen und hosten.</p></li>
+</ul>
+</div>
+</section>
+<section id="drehorte" class="tr-orte">
+<div class="tr-wrap">
+<h2 class="tr-h2 tr-display">Drehorte</h2>
+<p class="tr-ortliste tr-display" style="margin: 0"><span>Neuss</span><span>Jüchen</span><span>Düsseldorf</span></p>
+<p class="tr-ortnote">Gedreht wird bei dir im Betrieb oder per Fernwartung.</p>
+</div>
+</section>
+</main>
+<section id="kontakt" class="tr-contact">
+<div class="tr-wrap">
+<h2 class="tr-h2 tr-display">Ruf Robert an.</h2>
+<p class="tr-lead">Erzähl ihm, welche Szene bei dir gerade hängt. Termine nach Absprache.</p>
+<p class="tr-phone">[TELEFON]</p>
+<p class="tr-mail"><a href="mailto:[E-MAIL]">[E-MAIL]</a></p>
+<a class="tr-btn" href="tel:[TELEFON]">Robert anrufen</a>
+<p class="tr-billing"><b>sidequest.it</b> präsentiert eine Produktion aus dem Rhein-Kreis Neuss <b>Robert</b> in „Der Drucker streikt“ mit dem WLAN, dem Server, dem Postfach und der Webseite von 2014. Drehbuch Robert. Technik Robert. Kaffee du. Gedreht in Neuss, Jüchen und Düsseldorf.</p>
+<footer class="tr-foot"><a href="#impressum">Impressum</a><a href="#datenschutz">Datenschutz</a></footer>
+</div>
+</section>
+</div>
+<script>
+if (new URLSearchParams(location.search).get('modus') === 'alt') document.getElementById('seite').classList.add('alt');
+</script>
+</body>
+</html>

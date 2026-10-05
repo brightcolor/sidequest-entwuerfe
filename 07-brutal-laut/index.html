@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>sidequest · Entwurf 7: Brutal laut</title>
+<link rel="stylesheet" href="../assets/fonts/fonts.css">
+<style>
+body{margin:0}
+.bl{--bg:#FF3D8B;--fg:#150A10;--hot:#D4FF3A;--onhot:#150A10;--block:#150A10;--onblock:#FFE3EE;
+background:var(--bg);color:var(--fg);font-family:"Archivo",system-ui,sans-serif;font-size:19px;line-height:1.5;min-height:100vh;display:flex;flex-direction:column;overflow-x:hidden}
+.bl.alt{--bg:#150A10;--fg:#FFE3EE;--block:#FF3D8B;--onblock:#150A10}
+.bl a{color:var(--fg)}
+.bl :focus-visible{outline:4px solid var(--hot);outline-offset:4px}
+.bl-wrap{width:100%;max-width:1360px;margin:0 auto;padding:0 40px;box-sizing:border-box}
+.bl-x{font-stretch:125%;font-weight:900;letter-spacing:-.035em;text-transform:lowercase}
+.bl-top{display:flex;justify-content:space-between;align-items:center;gap:8px 24px;min-height:84px;border-bottom:4px solid var(--fg);flex-wrap:wrap}
+.bl .bl-logo{font-stretch:125%;font-weight:900;font-size:28px;text-decoration:none;letter-spacing:-.03em}
+.bl .bl-tel{font-weight:800;font-size:20px;text-decoration:none;border-bottom:4px solid var(--fg);padding:6px 0}
+.bl-hero{padding:48px 0 64px}
+.bl-h1{margin:0;font-size:clamp(64px,11.2vw,168px);line-height:.86;padding-bottom:.06em}
+.bl-heroin{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:32px 48px;align-items:end;margin-top:48px}
+.bl-lead{margin:0;font-size:26px;line-height:1.35;font-weight:500;max-width:30em}
+.bl .bl-btn{display:inline-flex;align-items:center;min-height:76px;padding:0 40px;background:var(--hot);color:var(--onhot);text-decoration:none;font-stretch:125%;font-weight:900;font-size:30px;letter-spacing:-.02em;border:4px solid var(--onhot);white-space:nowrap}
+.bl .bl-btn:hover{background:var(--fg);color:var(--bg)}
+.bl .bl-btn:active{transform:translateY(2px)}
+.bl-band{background:var(--hot);color:var(--onhot);border-block:4px solid var(--fg);overflow:hidden;white-space:nowrap}
+.bl-track{display:inline-flex;padding:18px 0;font-stretch:125%;font-weight:900;font-size:44px;letter-spacing:-.03em}
+.bl-track span{padding-right:40px}
+@media (prefers-reduced-motion:no-preference){.bl-track{animation:bl-lauf 26s linear infinite}}
+@keyframes bl-lauf{to{transform:translateX(-50%)}}
+.bl-sec{padding:96px 0}
+.bl-h2{margin:0 0 40px;font-size:clamp(48px,7vw,104px);line-height:.9}
+.bl-list{margin:0;padding:0;list-style:none;border-top:4px solid var(--fg)}
+.bl-row{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,4fr);gap:16px 40px;align-items:center;padding:22px 0;border-bottom:4px solid var(--fg)}
+.bl-word{font-stretch:125%;font-weight:900;font-size:clamp(48px,7.6vw,112px);line-height:.95;letter-spacing:-.04em}
+.bl-row p{margin:0;font-size:20px;font-weight:500}
+.bl-row p b{display:block;font-weight:800;font-size:15px;letter-spacing:.08em;text-transform:uppercase;margin-bottom:4px}
+.bl-row:hover{background:var(--hot);color:var(--onhot);box-shadow:-40px 0 0 var(--hot),40px 0 0 var(--hot)}
+.bl-who{background:var(--block);color:var(--onblock);padding:104px 0}
+.bl-who .bl-h2{color:var(--onblock)}
+.bl-whogrid{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,7fr);gap:56px;align-items:center}
+.bl-photo{aspect-ratio:4/5;border:6px solid var(--hot);display:grid;place-items:center;font-weight:700;font-size:18px;text-align:center;padding:24px;box-sizing:border-box;transform:rotate(-2.5deg)}
+.bl-who p{margin:0 0 22px;font-size:28px;line-height:1.35;font-weight:500;max-width:26em}
+.bl-who p:first-of-type{font-stretch:112%;font-weight:800;font-size:36px;line-height:1.15;letter-spacing:-.02em}
+.bl-where{padding:96px 0 104px}
+.bl-place{display:block;font-size:clamp(56px,10.5vw,158px);line-height:.92}
+.bl-place:nth-child(2){text-align:center}
+.bl-place:nth-child(3){text-align:right;font-stretch:96%}
+.bl-where .bl-note{margin:40px 0 0;font-size:24px;font-weight:600;text-align:right}
+.bl-contact{flex:1;background:var(--hot);color:var(--onhot);border-top:4px solid var(--fg);padding:96px 0 0}
+.bl-contact a{color:var(--onhot)}
+.bl-contact .bl-h2{color:var(--onhot)}
+.bl-phone{margin:0;font-stretch:125%;font-weight:900;font-size:clamp(48px,8vw,120px);line-height:1;letter-spacing:-.04em}
+.bl-mail{margin:20px 0 0;font-size:28px;font-weight:700}
+.bl-foot{margin-top:96px;padding:24px 0;border-top:4px solid var(--onhot);display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;font-weight:600;font-size:16px}
+.bl-foot nav{display:flex;gap:24px}
+@media (max-width:900px){
+.bl-wrap{padding:0 16px}
+.bl-top{min-height:68px}
+.bl .bl-logo{font-size:22px}
+.bl .bl-tel{font-size:16px}
+.bl-hero{padding:32px 0 48px}
+.bl-heroin{grid-template-columns:minmax(0,1fr);margin-top:32px}
+.bl-lead{font-size:21px}
+.bl .bl-btn{font-size:24px;min-height:64px;padding:0 28px}
+.bl-track{font-size:30px}
+.bl-sec,.bl-who,.bl-where{padding:64px 0}
+.bl-row{grid-template-columns:minmax(0,1fr)}
+.bl-row:hover{box-shadow:-16px 0 0 var(--hot),16px 0 0 var(--hot)}
+.bl-whogrid{grid-template-columns:minmax(0,1fr)}
+.bl-photo{max-width:320px}
+.bl-who p{font-size:21px}
+.bl-who p:first-of-type{font-size:26px}
+.bl-where .bl-note{text-align:left;font-size:19px}
+.bl-place:nth-child(3){font-stretch:80%}
+.bl-contact{padding-top:64px}
+.bl-mail{font-size:20px}
+}
+</style>
+</head>
+<body>
+<div class="bl" id="seite">
+<div class="bl-wrap">
+<header class="bl-top">
+<a class="bl-logo" href="#start">sidequest.it</a>
+<a class="bl-tel" href="#kontakt">[TELEFON]</a>
+</header>
+</div>
+<main>
+<section id="start" class="bl-hero">
+<div class="bl-wrap">
+<h1 class="bl-h1 bl-x">dein drucker hat angst vor mir.</h1>
+<div class="bl-heroin">
+<p class="bl-lead">Robert macht IT für kleine Betriebe in Neuss, Jüchen und Düsseldorf. Rechner, Netzwerk, Mail, Webseiten.</p>
+<a class="bl-btn" href="#kontakt">ruf robert an</a>
+</div>
+</div>
+</section>
+<div class="bl-band" aria-hidden="true">
+<div class="bl-track"><span>drucker / wlan / server / sicherung / outlook / microsoft 365 / wordpress /</span><span>drucker / wlan / server / sicherung / outlook / microsoft 365 / wordpress /</span></div>
+</div>
+<section id="leistungen" class="bl-sec">
+<div class="bl-wrap">
+<h2 class="bl-h2 bl-x">was ich mache.</h2>
+<ul class="bl-list">
+<li class="bl-row"><span class="bl-word bl-x">drucker.</span><p><b>Rechner und Drucker</b>Einrichten, Treiber pflegen, Updates einspielen. Neue Geräte kommen startklar bei dir an.</p></li>
+<li class="bl-row"><span class="bl-word bl-x">wlan.</span><p><b>Netzwerk und WLAN</b>Router, Zugangspunkte und ein eigenes Netz für Gäste. Das Signal reicht bis ins Lager.</p></li>
+<li class="bl-row"><span class="bl-word bl-x">backup.</span><p><b>Server und Datensicherung</b>Sicherung an zwei Orten, die Wiederherstellung regelmäßig geprobt.</p></li>
+<li class="bl-row"><span class="bl-word bl-x">mails.</span><p><b>E-Mail und Microsoft 365</b>Postfächer, Kalender und Konten, geschützt mit zweitem Faktor.</p></li>
+<li class="bl-row"><span class="bl-word bl-x">webseiten.</span><p><b>Webseiten und Hosting</b>WordPress bauen, pflegen und hosten.</p></li>
+</ul>
+</div>
+</section>
+<section id="robert" class="bl-who">
+<div class="bl-wrap">
+<h2 class="bl-h2 bl-x">wer ist robert?</h2>
+<div class="bl-whogrid">
+<div class="bl-photo">[Foto von Robert]</div>
+<div>
+<p>Ich bin Robert. Ich rede mit Routern, bis sie nachgeben, und mit Menschen, bis sie verstehen, was passiert ist.</p>
+<p>Ich mag Betriebe, in denen man sich mit Namen kennt, und Technik, die so leise läuft, dass man sie vergisst.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="wo" class="bl-where">
+<div class="bl-wrap">
+<h2 class="bl-h2 bl-x">wo?</h2>
+<p class="bl-x" style="margin:0"><span class="bl-place">neuss.</span><span class="bl-place">jüchen.</span><span class="bl-place">düsseldorf.</span></p>
+<p class="bl-note">Und überall dazwischen, wo ein Router blinkt.</p>
+</div>
+</section>
+</main>
+<section id="kontakt" class="bl-contact">
+<div class="bl-wrap">
+<h2 class="bl-h2 bl-x">jetzt.</h2>
+<p class="bl-phone">[TELEFON]</p>
+<p class="bl-mail"><a href="mailto:[E-MAIL]">[E-MAIL]</a></p>
+<footer class="bl-foot"><span>sidequest.it, IT-Hilfe in Neuss, Jüchen und Düsseldorf</span><nav aria-label="Rechtliches"><a href="#impressum">Impressum</a><a href="#datenschutz">Datenschutz</a></nav></footer>
+</div>
+</section>
+</div>
+<script>
+if (new URLSearchParams(location.search).get('modus') === 'alt') document.getElementById('seite').classList.add('alt');
+</script>
+</body>
+</html>

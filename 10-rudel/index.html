@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>sidequest · Entwurf 10: Rudel</title>
+<link rel="stylesheet" href="../assets/fonts/fonts.css">
+<style>
+body{margin:0}
+.rd{--bg:#F6F7F9;--surface:#FFFFFF;--ink:#172238;--soft:#4B5670;--line:#DDE2EA;--amber:#F2B230;--onamber:#172238;--moon:#F9DE8E;--tint:#EAEEF5;--head:#172238;--muzzle:#E9EDF4;
+background:var(--bg);color:var(--ink);font-family:"Figtree",system-ui,sans-serif;font-size:18px;line-height:1.6;min-height:100vh;display:flex;flex-direction:column}
+.rd.alt{--bg:#0F1522;--surface:#172036;--ink:#EEF2F8;--soft:#AAB4C8;--line:#2A3550;--moon:#3A3420;--tint:#1C2640;--head:#E3E8F1;--muzzle:#7D879C}
+.rd a{color:var(--ink)}
+.rd :focus-visible{outline:3px solid var(--amber);outline-offset:3px;border-radius:6px}
+.rd-wrap{width:100%;max-width:1240px;margin:0 auto;padding:0 40px;box-sizing:border-box}
+.rd-bri{font-family:"Bricolage Grotesque",system-ui,sans-serif}
+.rd-head{display:flex;justify-content:space-between;align-items:center;gap:8px 24px;min-height:80px;flex-wrap:wrap}
+.rd .rd-logo{display:flex;align-items:center;gap:10px;font-family:"Bricolage Grotesque",sans-serif;font-weight:800;font-size:26px;text-decoration:none;letter-spacing:-.02em}
+.rd-logo svg{width:36px;height:36px}
+.rd-nav{display:flex;gap:4px 28px;flex-wrap:wrap;align-items:center}
+.rd .rd-nav a{text-decoration:none;font-weight:500;padding:10px 0}
+.rd .rd-nav a:hover{color:var(--soft)}
+.rd .rd-btn{display:inline-flex;align-items:center;justify-content:center;min-height:54px;padding:0 28px;background:var(--amber);color:var(--onamber);text-decoration:none;font-weight:600;font-size:18px;border-radius:999px;border:0;font-family:inherit;cursor:pointer}
+.rd .rd-btn:hover{background:var(--ink);color:var(--bg)}
+.rd .rd-btn:active{transform:scale(.98)}
+.rd-hero{display:grid;grid-template-columns:minmax(0,6fr) minmax(0,5fr);gap:56px;align-items:center;padding:48px 0 104px}
+.rd-h1{margin:0;font-family:"Bricolage Grotesque",sans-serif;font-weight:800;font-size:76px;line-height:1;letter-spacing:-.035em;text-wrap:balance}
+.rd-lead{margin:24px 0 36px;font-size:21px;color:var(--soft);max-width:30em}
+.rd-ctas{display:flex;flex-wrap:wrap;gap:16px 28px;align-items:center}
+.rd .rd-more{font-weight:600;text-underline-offset:5px}
+.rd-art{position:relative;aspect-ratio:1;border-radius:28px;background:var(--tint);display:grid;place-items:center;overflow:hidden}
+.rd-moon{position:absolute;width:72%;aspect-ratio:1;border-radius:50%;background:var(--moon);top:12%;left:14%}
+.rd-art svg{position:relative;width:58%;height:auto;margin-top:12%}
+.rd-tag{position:absolute;left:24px;bottom:24px;background:var(--surface);border-radius:999px;padding:10px 18px;font-weight:600;font-size:16px;box-shadow:0 6px 18px -10px rgba(23,34,56,.35)}
+.rd-sec{padding:104px 0}
+.rd-h2{margin:0 0 40px;font-family:"Bricolage Grotesque",sans-serif;font-weight:800;font-size:52px;line-height:1.05;letter-spacing:-.03em}
+.rd-steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;margin:0;padding:0;list-style:none;counter-reset:s}
+.rd-steps li{counter-increment:s;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:28px}
+.rd-steps li::before{content:counter(s);display:grid;place-items:center;width:44px;height:44px;border-radius:50%;background:var(--ink);color:var(--bg);font-family:"Bricolage Grotesque",sans-serif;font-weight:800;font-size:20px;margin-bottom:18px}
+.rd-steps b{display:block;font-family:"Bricolage Grotesque",sans-serif;font-weight:700;font-size:24px;line-height:1.2;margin-bottom:6px}
+.rd-steps span{color:var(--soft)}
+.rd-bento{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:16px}
+.rd-tile{border-radius:14px;padding:30px;background:var(--surface);border:1px solid var(--line);grid-column:span 2;display:flex;flex-direction:column;gap:8px;min-height:200px;box-sizing:border-box}
+.rd-tile h3{margin:0;font-family:"Bricolage Grotesque",sans-serif;font-weight:700;font-size:26px;line-height:1.15}
+.rd-tile p{margin:0;color:var(--soft)}
+.rd-tile.breit{grid-column:span 3}
+.rd-tile.gelb{background:var(--amber);border-color:var(--amber);color:var(--onamber)}
+.rd-tile.gelb p{color:var(--onamber)}
+.rd-tile.dunkel{background:var(--ink);border-color:var(--ink);color:var(--bg)}
+.rd-tile.dunkel p{color:var(--bg);opacity:.85}
+.rd-tile .rd-big{font-family:"Bricolage Grotesque",sans-serif;font-weight:800;font-size:40px;line-height:1.05;letter-spacing:-.02em;margin-top:auto}
+.rd-about{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,7fr);gap:56px;align-items:center}
+.rd-photo{aspect-ratio:4/5;border-radius:20px;border:2px dashed var(--line);display:grid;place-items:center;color:var(--soft);background:var(--surface);font-size:17px;text-align:center;padding:24px;box-sizing:border-box}
+.rd-about p{margin:0 0 18px;font-size:21px;max-width:32em}
+.rd-chips{display:flex;flex-wrap:wrap;gap:12px;margin:0;padding:0;list-style:none}
+.rd-chips li{background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:12px 24px;font-family:"Bricolage Grotesque",sans-serif;font-weight:700;font-size:26px}
+.rd-region p{margin:24px 0 0;color:var(--soft);font-size:19px}
+.rd-contact{flex:1;background:var(--surface);border-top:1px solid var(--line);padding:104px 0 0}
+.rd-contactgrid{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:56px;align-items:start}
+.rd-contact .rd-lead{margin-top:0}
+.rd-direct{background:var(--tint);border-radius:14px;padding:24px 28px}
+.rd-direct span{display:block;font-size:15px;color:var(--soft)}
+.rd-direct strong{display:block;font-family:"Bricolage Grotesque",sans-serif;font-weight:800;font-size:34px;margin-bottom:14px}
+.rd-form{display:grid;gap:18px}
+.rd-field{display:grid;gap:8px}
+.rd-field label{font-weight:600;font-size:16px}
+.rd-field input,.rd-field textarea{font:inherit;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:14px 16px;min-height:52px;box-sizing:border-box}
+.rd-field textarea{min-height:140px;resize:vertical}
+.rd-field input:focus,.rd-field textarea:focus{outline:3px solid var(--amber);outline-offset:1px}
+.rd-hint{margin:0;font-size:15px;color:var(--soft)}
+.rd-foot{margin-top:96px;border-top:1px solid var(--line);padding:24px 0;display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;font-size:15px;color:var(--soft)}
+.rd-foot nav{display:flex;gap:24px}
+@media (max-width:900px){
+.rd-wrap{padding:0 16px}
+.rd-hero,.rd-about,.rd-contactgrid{grid-template-columns:minmax(0,1fr);gap:36px}
+.rd-hero{padding:24px 0 64px}
+.rd-h1{font-size:46px}
+.rd-sec,.rd-contact{padding-top:64px}
+.rd-sec{padding-bottom:64px}
+.rd-h2{font-size:36px}
+.rd-steps{grid-template-columns:minmax(0,1fr)}
+.rd-bento{grid-template-columns:minmax(0,1fr)}
+.rd-tile,.rd-tile.breit{grid-column:auto;min-height:0}
+.rd-photo{max-width:340px}
+}
+</style>
+</head>
+<body>
+<div class="rd" id="seite">
+<div class="rd-wrap">
+<header class="rd-head">
+<a class="rd-logo" href="#start"><svg viewBox="0 0 120 120" aria-hidden="true"><polygon points="20,8 48,38 16,54" fill="var(--head)"></polygon><polygon points="100,8 72,38 104,54" fill="var(--head)"></polygon><polygon points="16,54 44,34 76,34 104,54 94,84 60,114 26,84" fill="var(--head)"></polygon><polygon points="44,74 76,74 60,108" fill="var(--muzzle)"></polygon><polygon points="34,60 47,57 43,66" fill="#F2B230"></polygon><polygon points="86,60 73,57 77,66" fill="#F2B230"></polygon><polygon points="54,100 66,100 60,108" fill="var(--head)"></polygon></svg>sidequest</a>
+<nav class="rd-nav" aria-label="Hauptnavigation">
+<a href="#ablauf">So läuft's</a>
+<a href="#leistungen">Leistungen</a>
+<a href="#robert">Robert</a>
+<a href="#kontakt">Kontakt</a>
+</nav>
+</header>
+</div>
+<main>
+<section id="start" class="rd-wrap rd-hero">
+<div>
+<h1 class="rd-h1">Deine IT hat jetzt einen Robert.</h1>
+<p class="rd-lead">Rechner, Drucker, Netzwerk, Mail und Webseiten für kleine Betriebe in Neuss, Jüchen und Düsseldorf. Ein Anruf, und Robert kümmert sich.</p>
+<div class="rd-ctas"><a class="rd-btn" href="#kontakt">Robert anrufen</a><a class="rd-more" href="#ablauf">So läuft's</a></div>
+</div>
+<div class="rd-art">
+<div class="rd-moon" aria-hidden="true"></div>
+<svg viewBox="0 0 120 120" role="img" aria-label="Geometrischer Wolfskopf vor einem Mond"><polygon points="20,8 48,38 16,54" fill="var(--head)"></polygon><polygon points="100,8 72,38 104,54" fill="var(--head)"></polygon><polygon points="25,20 41,38 22,47" fill="#33415F"></polygon><polygon points="95,20 79,38 98,47" fill="#33415F"></polygon><polygon points="16,54 44,34 76,34 104,54 94,84 60,114 26,84" fill="var(--head)"></polygon><polygon points="54,36 66,36 60,64" fill="#2A3754"></polygon><polygon points="44,74 76,74 60,108" fill="var(--muzzle)"></polygon><polygon points="34,60 47,57 43,66" fill="#F2B230"></polygon><polygon points="86,60 73,57 77,66" fill="#F2B230"></polygon><polygon points="54,100 66,100 60,108" fill="var(--head)"></polygon></svg>
+<span class="rd-tag">Robert, genannt der Wolf</span>
+</div>
+</section>
+<section id="ablauf" class="rd-sec">
+<div class="rd-wrap">
+<h2 class="rd-h2">So läuft's</h2>
+<ol class="rd-steps">
+<li><b>Du rufst an</b><span>und erzählst, was klemmt. Gern auch so, wie es sich anfühlt: „Der Drucker macht wieder dieses Geräusch.“</span></li>
+<li><b>Robert schaut es sich an</b><span>bei dir vor Ort oder per Fernwartung, je nachdem, was die Sache braucht.</span></li>
+<li><b>Es läuft wieder</b><span>und du weißt, warum. Robert erklärt es dir in zwei Sätzen und schreibt es auf.</span></li>
+</ol>
+</div>
+</section>
+<section id="leistungen" class="rd-sec" style="padding-top:0">
+<div class="rd-wrap">
+<h2 class="rd-h2">Womit Robert hilft</h2>
+<div class="rd-bento">
+<div class="rd-tile breit gelb"><h3>Netzwerk und WLAN</h3><p>Robert misst, wo das Signal müde wird, setzt Router und Zugangspunkte und gibt Gästen ein eigenes Netz.</p><p class="rd-big">Bis ins Lager.</p></div>
+<div class="rd-tile breit dunkel"><h3>Server und Datensicherung</h3><p>Sicherung an zwei Orten, die Wiederherstellung regelmäßig geprobt, Server gewartet.</p><p class="rd-big">Zwei Schlüssel.</p></div>
+<div class="rd-tile"><h3>Rechner und Drucker</h3><p>Einrichten, Treiber pflegen, Updates einspielen.</p></div>
+<div class="rd-tile"><h3>E-Mail und Microsoft 365</h3><p>Postfächer, Kalender und Konten mit zweitem Faktor.</p></div>
+<div class="rd-tile"><h3>Webseiten und Hosting</h3><p>WordPress bauen, pflegen und hosten.</p></div>
+</div>
+</div>
+</section>
+<section id="robert" class="rd-sec" style="background:var(--tint)">
+<div class="rd-wrap rd-about">
+<div class="rd-photo">[Foto von Robert]</div>
+<div>
+<h2 class="rd-h2">Wer ist Robert?</h2>
+<p>Robert ist der, den man anruft, wenn es klemmt. Er erklärt Technik so, dass man sie vor sich sieht: Der Router ist ein Pförtner, der jeden Besucher kennt, und die Datensicherung ein Schließfach mit zwei Schlüsseln.</p>
+<p>Er mag Betriebe, in denen man sich mit Namen kennt. Wer einmal dabei ist, gehört zum Rudel.</p>
+</div>
+</div>
+</section>
+<section class="rd-sec rd-region">
+<div class="rd-wrap">
+<h2 class="rd-h2">Wo Robert unterwegs ist</h2>
+<ul class="rd-chips"><li>Neuss</li><li>Jüchen</li><li>Düsseldorf</li></ul>
+<p>Und in den Orten dazwischen. Frag einfach, ob er zu dir kommt.</p>
+</div>
+</section>
+</main>
+<section id="kontakt" class="rd-contact">
+<div class="rd-wrap rd-contactgrid">
+<div>
+<h2 class="rd-h2">Schreib Robert</h2>
+<p class="rd-lead">Erzähl kurz, was los ist. Robert meldet sich und sagt dir, wie er vorgeht.</p>
+<div class="rd-direct"><span>Lieber direkt?</span><strong>[TELEFON]</strong><a class="rd-btn" href="tel:[TELEFON]">Robert anrufen</a></div>
+</div>
+<form class="rd-form" onsubmit="return false">
+<div class="rd-field"><label for="rd-name">Dein Name</label><input id="rd-name" name="name" autocomplete="name"></div>
+<div class="rd-field"><label for="rd-kontakt">Telefon oder E-Mail</label><input id="rd-kontakt" name="kontakt" autocomplete="email"></div>
+<div class="rd-field"><label for="rd-was">Was ist los?</label><textarea id="rd-was" name="nachricht"></textarea></div>
+<p class="rd-hint">Robert nutzt deine Angaben nur, um dir zu antworten.</p>
+<div><button type="submit" class="rd-btn">Nachricht senden</button></div>
+</form>
+</div>
+<div class="rd-wrap">
+<footer class="rd-foot"><span>sidequest.it, IT-Hilfe in Neuss, Jüchen und Düsseldorf</span><nav aria-label="Rechtliches"><a href="#impressum">Impressum</a><a href="#datenschutz">Datenschutz</a></nav></footer>
+</div>
+</section>
+</div>
+<script>
+if (new URLSearchParams(location.search).get('modus') === 'alt') document.getElementById('seite').classList.add('alt');
+</script>
+</body>
+</html>

@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>sidequest · Entwurf 5: Abfahrtstafel</title>
+<link rel="stylesheet" href="../assets/fonts/fonts.css">
+<style>
+body{margin:0}
+.ab{--platform:#E8EBEE;--ink:#14181C;--soft:#4A535C;--board:#1B1E21;--flap:#2C3034;--seam:#0E1012;--flaptext:#F4F2EA;--sign:#0D5A8C;--onsign:#FFFFFF;--notice:#FFD100;--onnotice:#14181C;--line:#C7CDD3;--card:#F5F7F8;
+background:var(--platform);color:var(--ink);font-family:"Barlow",system-ui,sans-serif;font-size:18px;line-height:1.55;min-height:100vh;display:flex;flex-direction:column}
+.ab.alt{--platform:#0F1215;--ink:#E7EBEF;--soft:#A5AFB9;--board:#050607;--flap:#202428;--seam:#000;--line:#2A3036;--sign:#1D6FA8;--card:#161A1E}
+.ab a{color:var(--ink)}
+.ab :focus-visible{outline:3px solid var(--notice);outline-offset:3px}
+.ab-wrap{width:100%;max-width:1280px;margin:0 auto;padding:0 40px;box-sizing:border-box}
+.ab-cond{font-family:"Barlow Condensed","Arial Narrow",sans-serif}
+.ab-sign{background:var(--sign);color:var(--onsign)}
+.ab-signin{display:flex;align-items:center;justify-content:space-between;gap:8px 24px;min-height:88px;flex-wrap:wrap}
+.ab .ab-logo{color:var(--onsign);text-decoration:none;font-family:"Barlow Condensed",sans-serif;font-weight:600;font-size:40px;letter-spacing:.01em;line-height:1}
+.ab-nav{display:flex;gap:4px 28px;flex-wrap:wrap}
+.ab .ab-nav a{color:var(--onsign);text-decoration:none;font-weight:500;font-size:17px;padding:10px 0}
+.ab .ab-nav a:hover{text-decoration:underline;text-underline-offset:6px}
+.ab-hero{padding:64px 0 88px}
+.ab-herotop{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:48px;align-items:end;margin-bottom:48px}
+.ab-h1{margin:0;font-family:"Barlow Condensed",sans-serif;font-weight:700;font-size:96px;line-height:.95;letter-spacing:-.01em;text-wrap:balance}
+.ab-lead{margin:0 0 24px;font-size:21px;color:var(--soft)}
+.ab .ab-btn{display:inline-flex;align-items:center;min-height:54px;padding:0 28px;background:var(--notice);color:var(--onnotice);text-decoration:none;font-family:"Barlow Condensed",sans-serif;font-weight:700;font-size:23px;letter-spacing:.02em;border-radius:3px}
+.ab .ab-btn:hover{background:var(--ink);color:var(--platform)}
+.ab-board{background:var(--board);border-radius:10px;padding:26px 28px 30px;box-shadow:0 24px 50px -24px rgba(10,14,18,.55)}
+.ab-boardhead{display:flex;justify-content:space-between;align-items:baseline;color:var(--flaptext);margin-bottom:18px}
+.ab-boardhead strong{font-family:"Barlow Condensed",sans-serif;font-weight:600;font-size:34px;letter-spacing:.02em}
+.ab-boardhead span{font-size:15px;opacity:.75}
+.ab-table{width:100%;border-collapse:separate;border-spacing:0 10px;color:var(--flaptext)}
+.ab-table th{text-align:left;font-weight:500;font-size:14px;letter-spacing:.12em;text-transform:uppercase;opacity:.7;padding:0 10px 0 0}
+.ab-table td{padding:0 10px 0 0;vertical-align:middle;white-space:nowrap}
+.ab-tiles{display:inline-flex;gap:3px;perspective:300px}
+.ab-t,.ab-strip,.ab-gleis{display:inline-flex;align-items:center;justify-content:center;height:46px;background:linear-gradient(var(--flap) 0 49%,var(--seam) 49% 51%,var(--flap) 51%);border-radius:3px;font-family:"Barlow Condensed",sans-serif;font-weight:600;font-size:30px;color:var(--flaptext);transform-origin:50% 50%}
+.ab-t{width:28px}
+.ab-colon{display:inline-flex;align-items:center;font-family:"Barlow Condensed",sans-serif;font-weight:600;font-size:30px;width:10px;justify-content:center}
+.ab-strip{justify-content:flex-start;padding:0 14px;min-width:100%;box-sizing:border-box}
+.ab-gleis{width:44px}
+.ab-note{display:inline-flex;align-items:center;height:46px;padding:0 14px;border-radius:3px;font-family:"Barlow Condensed",sans-serif;font-weight:600;font-size:24px;color:var(--flaptext)}
+.ab-note.gelb{background:var(--notice);color:var(--onnotice)}
+.ab-sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+@media (prefers-reduced-motion:no-preference){
+.ab-t,.ab-strip,.ab-gleis{animation:ab-flip .55s cubic-bezier(.3,1.4,.6,1) both}
+.ab-table tbody tr:nth-child(2) .ab-t,.ab-table tbody tr:nth-child(2) .ab-strip,.ab-table tbody tr:nth-child(2) .ab-gleis{animation-delay:.15s}
+.ab-table tbody tr:nth-child(3) .ab-t,.ab-table tbody tr:nth-child(3) .ab-strip,.ab-table tbody tr:nth-child(3) .ab-gleis{animation-delay:.3s}
+.ab-table tbody tr:nth-child(4) .ab-t,.ab-table tbody tr:nth-child(4) .ab-strip,.ab-table tbody tr:nth-child(4) .ab-gleis{animation-delay:.45s}
+.ab-table tbody tr:nth-child(5) .ab-t,.ab-table tbody tr:nth-child(5) .ab-strip,.ab-table tbody tr:nth-child(5) .ab-gleis{animation-delay:.6s}
+}
+@keyframes ab-flip{0%{transform:rotateX(90deg)}60%{transform:rotateX(-18deg)}100%{transform:rotateX(0)}}
+.ab-scroll{overflow-x:auto}
+.ab-sec{padding:104px 0;border-top:1px solid var(--line)}
+.ab-h2{margin:0 0 48px;font-family:"Barlow Condensed",sans-serif;font-weight:700;font-size:64px;line-height:1}
+.ab-line{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:24px;margin:0;padding:0;list-style:none;position:relative}
+.ab-line::before{content:"";position:absolute;left:0;right:0;top:15px;height:8px;background:var(--sign);border-radius:4px}
+.ab-stop{position:relative;padding-top:56px}
+.ab-stop::before{content:"";position:absolute;left:0;top:5px;width:20px;height:20px;border-radius:50%;background:var(--card);border:5px solid var(--sign)}
+.ab-stop b{display:block;font-family:"Barlow Condensed",sans-serif;font-weight:700;font-size:28px;line-height:1.05;margin-bottom:8px}
+.ab-stop span{color:var(--soft);font-size:17px}
+.ab-linelbl{display:inline-flex;align-items:center;gap:12px;margin-bottom:32px;font-weight:600}
+.ab-linelbl i{font-style:normal;background:var(--sign);color:var(--onsign);font-family:"Barlow Condensed",sans-serif;font-weight:700;font-size:22px;padding:2px 12px;border-radius:999px}
+.ab-guide{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,7fr);gap:56px;align-items:start}
+.ab-photo{aspect-ratio:4/5;border:2px dashed var(--line);border-radius:8px;display:grid;place-items:center;color:var(--soft);background:var(--card);font-size:17px;text-align:center;padding:24px;box-sizing:border-box}
+.ab-guide p{margin:0 0 18px;font-size:21px;max-width:32em}
+.ab-stations{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(320px,100%),1fr));gap:20px}
+.ab-station{background:var(--sign);color:var(--onsign);border-radius:6px;padding:22px 26px;border:4px solid var(--card);box-shadow:0 0 0 2px var(--sign)}
+.ab-station b{display:block;font-family:"Barlow Condensed",sans-serif;font-weight:600;font-size:48px;line-height:1}
+.ab-station span{font-size:16px;opacity:.9}
+.ab-contact{flex:1;background:var(--board);color:var(--flaptext);padding:104px 0 0}
+.ab-contact a{color:var(--flaptext)}
+.ab-contactgrid{display:grid;grid-template-columns:minmax(0,6fr) minmax(0,5fr);gap:56px;align-items:end}
+.ab-contact .ab-h2{margin-bottom:20px}
+.ab-contact p{margin:0;font-size:21px;opacity:.9;max-width:30em}
+.ab-pill{display:inline-flex;align-items:center;gap:12px;background:var(--notice);color:var(--onnotice);font-family:"Barlow Condensed",sans-serif;font-weight:700;font-size:22px;padding:4px 14px;border-radius:3px;margin-bottom:20px}
+.ab-lines{display:grid;gap:8px;font-family:"Barlow Condensed",sans-serif;font-size:38px;font-weight:600;line-height:1.1}
+.ab-contact .ab-lines p{font-size:38px;opacity:1}
+.ab-lines span{display:block;font-family:"Barlow",sans-serif;font-size:14px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;opacity:.7}
+.ab-contact .ab-btn{margin-top:20px;justify-self:start}
+.ab-contact .ab-btn:hover{background:var(--flaptext);color:var(--board)}
+.ab-foot{margin-top:96px;padding:24px 0;border-top:1px solid #33383D;display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;font-size:15px;opacity:.85}
+.ab-foot nav{display:flex;gap:24px}
+@media (max-width:900px){
+.ab-wrap{padding:0 16px}
+.ab-hero{padding:40px 0 64px}
+.ab-herotop,.ab-guide,.ab-contactgrid{grid-template-columns:minmax(0,1fr);gap:28px}
+.ab-h1{font-size:60px}
+.ab-board{padding:18px 14px 20px}
+.ab-t{width:22px;font-size:24px}
+.ab-strip,.ab-gleis,.ab-note{font-size:22px;height:40px}
+.ab-t{height:40px}
+.ab-sec{padding:72px 0}
+.ab-h2{font-size:46px;margin-bottom:32px}
+.ab-line{grid-template-columns:minmax(0,1fr);gap:28px;padding-left:44px}
+.ab-line::before{left:6px;right:auto;top:0;bottom:0;width:8px;height:auto}
+.ab-stop{padding-top:0}
+.ab-stop::before{left:-44px;top:2px}
+.ab-photo{max-width:340px}
+.ab-contact{padding-top:72px}
+}
+</style>
+</head>
+<body>
+<div class="ab" id="seite">
+<header class="ab-sign">
+<div class="ab-wrap ab-signin">
+<a class="ab-logo" href="#start">sidequest.it</a>
+<nav class="ab-nav" aria-label="Hauptnavigation">
+<a href="#linie">Linienplan</a>
+<a href="#robert">Zugbegleiter</a>
+<a href="#halte">Haltestellen</a>
+<a href="#kontakt">Service-Point</a>
+</nav>
+</div>
+</header>
+<main>
+<section id="start" class="ab-hero">
+<div class="ab-wrap">
+<div class="ab-herotop">
+<h1 class="ab-h1">Deine IT fährt wieder nach Plan.</h1>
+<div>
+<p class="ab-lead">Robert hilft kleinen Betrieben in Neuss, Jüchen und Düsseldorf mit Rechnern, Netzwerk, Mail und Webseiten.</p>
+<a class="ab-btn" href="#kontakt">Robert anrufen</a>
+</div>
+</div>
+<div class="ab-board">
+<div class="ab-boardhead"><strong>Abfahrt</strong><span>sidequest.it, alle Linien</span></div>
+<div class="ab-scroll">
+<table class="ab-table">
+<thead><tr><th scope="col">Zeit</th><th scope="col">Ziel</th><th scope="col">Halt</th><th scope="col">Gleis</th><th scope="col">Hinweis</th></tr></thead>
+<tbody>
+<tr><td><span class="ab-sr">08:15</span><span class="ab-tiles" aria-hidden="true"><span class="ab-t">0</span><span class="ab-t">8</span><span class="ab-colon">:</span><span class="ab-t">1</span><span class="ab-t">5</span></span></td><td><span class="ab-strip">Drucker druckt wieder</span></td><td><span class="ab-strip">Neuss</span></td><td><span class="ab-gleis">1</span></td><td><span class="ab-note">pünktlich</span></td></tr>
+<tr><td><span class="ab-sr">09:40</span><span class="ab-tiles" aria-hidden="true"><span class="ab-t">0</span><span class="ab-t">9</span><span class="ab-colon">:</span><span class="ab-t">4</span><span class="ab-t">0</span></span></td><td><span class="ab-strip">WLAN bis ins Lager</span></td><td><span class="ab-strip">Jüchen</span></td><td><span class="ab-gleis">2</span></td><td><span class="ab-note">pünktlich</span></td></tr>
+<tr><td><span class="ab-sr">11:05</span><span class="ab-tiles" aria-hidden="true"><span class="ab-t">1</span><span class="ab-t">1</span><span class="ab-colon">:</span><span class="ab-t">0</span><span class="ab-t">5</span></span></td><td><span class="ab-strip">Sicherung an zwei Orten</span></td><td><span class="ab-strip">Düsseldorf</span></td><td><span class="ab-gleis">3</span></td><td><span class="ab-note">pünktlich</span></td></tr>
+<tr><td><span class="ab-sr">13:30</span><span class="ab-tiles" aria-hidden="true"><span class="ab-t">1</span><span class="ab-t">3</span><span class="ab-colon">:</span><span class="ab-t">3</span><span class="ab-t">0</span></span></td><td><span class="ab-strip">Outlook kennt dich wieder</span></td><td><span class="ab-strip">Neuss</span></td><td><span class="ab-gleis">1</span></td><td><span class="ab-note">pünktlich</span></td></tr>
+<tr><td><span class="ab-sr">15:20</span><span class="ab-tiles" aria-hidden="true"><span class="ab-t">1</span><span class="ab-t">5</span><span class="ab-colon">:</span><span class="ab-t">2</span><span class="ab-t">0</span></span></td><td><span class="ab-strip">Webseite frisch gestrichen</span></td><td><span class="ab-strip">Düsseldorf</span></td><td><span class="ab-gleis">4</span></td><td><span class="ab-note gelb">heute von Gleis 4</span></td></tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</section>
+<section id="linie" class="ab-sec">
+<div class="ab-wrap">
+<h2 class="ab-h2">Linienplan</h2>
+<p class="ab-linelbl"><i>SQ</i>Eine Linie, alle Halte, ein Ansprechpartner</p>
+<ol class="ab-line">
+<li class="ab-stop"><b>Rechner und Drucker</b><span>Einrichten, Treiber pflegen, Updates einspielen.</span></li>
+<li class="ab-stop"><b>E-Mail und Microsoft 365</b><span>Postfächer, Kalender, Konten mit zweitem Faktor.</span></li>
+<li class="ab-stop"><b>Netzwerk und WLAN</b><span>Router, Zugangspunkte, eigenes Netz für Gäste.</span></li>
+<li class="ab-stop"><b>Server und Sicherung</b><span>Sicherung an zwei Orten, Wiederherstellung geprobt.</span></li>
+<li class="ab-stop"><b>Webseiten und Hosting</b><span>WordPress bauen, pflegen und hosten.</span></li>
+</ol>
+</div>
+</section>
+<section id="robert" class="ab-sec">
+<div class="ab-wrap ab-guide">
+<div class="ab-photo">[Foto von Robert]</div>
+<div>
+<h2 class="ab-h2">Dein Zugbegleiter heißt Robert.</h2>
+<p>Robert kennt die Strecke zwischen deinem Router und deinem Drucker. Er steigt zu, wenn es hakt, bringt alles wieder auf die Schiene und erklärt dir in zwei Sätzen, was los war.</p>
+<p>Wer mag, bekommt ihn auch als Dauerkarte: Robert schaut regelmäßig nach dem Rechten und meldet sich, wenn sich eine Verspätung ankündigt.</p>
+</div>
+</div>
+</section>
+<section id="halte" class="ab-sec">
+<div class="ab-wrap">
+<h2 class="ab-h2">Haltestellen</h2>
+<div class="ab-stations">
+<div class="ab-station"><b>Neuss</b><span>Hafen, Innenstadt und Umgebung</span></div>
+<div class="ab-station"><b>Jüchen</b><span>Rund um Schloss Dyck</span></div>
+<div class="ab-station"><b>Düsseldorf</b><span>Links und rechts vom Rhein</span></div>
+</div>
+</div>
+</section>
+</main>
+<section id="kontakt" class="ab-contact">
+<div class="ab-wrap ab-contactgrid">
+<div>
+<p class="ab-pill">Service-Point</p>
+<h2 class="ab-h2">Hängt was? Sag Bescheid.</h2>
+<p>Ruf an oder schreib. Robert fragt nach, was los ist, und sagt dir, wann er vorbeikommt.</p>
+</div>
+<div class="ab-lines">
+<p style="margin:0"><span>Telefon</span>[TELEFON]</p>
+<p style="margin:0"><span>E-Mail</span>[E-MAIL]</p>
+<a class="ab-btn" href="tel:[TELEFON]">Robert anrufen</a>
+</div>
+</div>
+<div class="ab-wrap">
+<footer class="ab-foot"><span>sidequest.it, IT-Hilfe in Neuss, Jüchen und Düsseldorf</span><nav aria-label="Rechtliches"><a href="#impressum">Impressum</a><a href="#datenschutz">Datenschutz</a></nav></footer>
+</div>
+</section>
+</div>
+<script>
+if (new URLSearchParams(location.search).get('modus') === 'alt') document.getElementById('seite').classList.add('alt');
+</script>
+</body>
+</html>

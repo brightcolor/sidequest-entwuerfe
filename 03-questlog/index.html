@@ -1,0 +1,255 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>sidequest · Entwurf 3: Questlog</title>
+<link rel="stylesheet" href="../assets/fonts/fonts.css">
+<style>
+body{margin:0}
+.ql{--bg:#111A2C;--bg2:#0C1322;--panel:#18233B;--line:#2B3A5E;--text:#E9EEFA;--dim:#A3B2D3;--gold:#FFD447;--ongold:#1A1400;
+background:var(--bg);color:var(--text);font-family:"Hanken Grotesk",system-ui,sans-serif;font-size:18px;line-height:1.55;min-height:100vh;display:flex;flex-direction:column}
+.ql.alt{--bg:#EDF1F8;--bg2:#E1E7F2;--panel:#FFFFFF;--line:#C8D2E5;--text:#121C33;--dim:#4A5878}
+.ql a{color:var(--text)}
+.ql :focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+.ql-wrap{width:100%;max-width:1240px;margin:0 auto;padding:0 40px;box-sizing:border-box}
+.ql-hud{font-family:"Chakra Petch",system-ui,sans-serif}
+.ql-head{border-bottom:1px solid var(--line);background:var(--bg2)}
+.ql-headin{display:flex;align-items:center;justify-content:space-between;gap:8px 24px;min-height:72px;flex-wrap:wrap}
+.ql .ql-logo{display:flex;align-items:center;gap:12px;font-family:"Chakra Petch",sans-serif;font-weight:700;font-size:24px;text-decoration:none;color:var(--text)}
+.ql-logomark{width:30px;height:30px;background:var(--gold);color:var(--ongold);display:grid;place-items:center;transform:rotate(45deg);border-radius:4px}
+.ql-logomark span{transform:rotate(-45deg);font-weight:700;font-size:20px;line-height:1}
+.ql-nav{display:flex;gap:4px 28px;flex-wrap:wrap}
+.ql .ql-nav a{font-family:"Chakra Petch",sans-serif;font-weight:500;font-size:16px;text-decoration:none;letter-spacing:.04em;padding:10px 0;color:var(--dim)}
+.ql .ql-nav a:hover{color:var(--text)}
+.ql-hero{padding:72px 0 104px}
+.ql-herogrid{display:grid;grid-template-columns:minmax(0,6fr) minmax(0,5fr);gap:64px;align-items:center}
+.ql-marker{width:88px;height:88px;background:var(--gold);color:var(--ongold);border-radius:8px;transform:rotate(45deg);display:grid;place-items:center;margin:8px 0 44px 12px}
+.ql-marker span{transform:rotate(-45deg);font-family:"Chakra Petch",sans-serif;font-weight:700;font-size:60px;line-height:1}
+@media (prefers-reduced-motion:no-preference){.ql-marker{animation:ql-bob 2.6s ease-in-out infinite}}
+@keyframes ql-bob{0%,100%{translate:0 0}50%{translate:0 -10px}}
+.ql-kick{margin:0 0 14px;font-family:"Chakra Petch",sans-serif;font-weight:600;font-size:16px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold)}
+.ql.alt .ql-kick{color:var(--dim)}
+.ql-h1{margin:0;font-family:"Chakra Petch",sans-serif;font-weight:700;font-size:68px;line-height:1.02;letter-spacing:-.01em;text-wrap:balance}
+.ql-lead{margin:24px 0 0;font-size:22px;color:var(--dim);max-width:30em}
+.ql-panel{background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:28px 30px;box-sizing:border-box}
+.ql-offerhead{display:flex;gap:16px;align-items:center;padding-bottom:20px;border-bottom:1px solid var(--line);margin-bottom:20px}
+.ql-mini{width:34px;height:34px;flex:none;background:var(--gold);color:var(--ongold);border-radius:4px;transform:rotate(45deg);display:grid;place-items:center}
+.ql-mini span{transform:rotate(-45deg);font-family:"Chakra Petch",sans-serif;font-weight:700;font-size:22px;line-height:1}
+.ql-small{margin:0 0 6px;font-family:"Chakra Petch",sans-serif;font-weight:600;font-size:14px;letter-spacing:.12em;text-transform:uppercase;color:var(--dim)}
+.ql-qtitle{margin:0;font-family:"Chakra Petch",sans-serif;font-weight:700;font-size:26px;line-height:1.15}
+.ql-meta{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:0 0 20px}
+.ql-meta dt{font-family:"Chakra Petch",sans-serif;font-weight:600;font-size:14px;letter-spacing:.12em;text-transform:uppercase;color:var(--dim)}
+.ql-meta dd{margin:2px 0 0;font-weight:500}
+.ql-goals{margin:0 0 20px;padding:0;list-style:none;display:grid;gap:8px}
+.ql-goals li{display:flex;gap:12px;align-items:baseline}
+.ql-goals li::before{content:"";flex:none;width:12px;height:12px;border:2px solid var(--gold);border-radius:2px;transform:translateY(1px)}
+.ql-reward{margin:0 0 24px;font-weight:700;font-size:20px}
+.ql .ql-btn{all:unset;box-sizing:border-box;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;min-height:52px;padding:0 26px;background:var(--gold);color:var(--ongold);border-radius:4px;font-family:"Chakra Petch",sans-serif;font-weight:700;font-size:18px;letter-spacing:.04em}
+.ql .ql-btn:hover{filter:brightness(1.08)}
+.ql .ql-btn:active{transform:translateY(1px)}
+.ql-done{margin:0;padding:16px 18px;border:1px dashed var(--gold);border-radius:4px;font-weight:500}
+.ql-sec{padding:104px 0;border-top:1px solid var(--line)}
+.ql-h2{margin:0 0 40px;font-family:"Chakra Petch",sans-serif;font-weight:700;font-size:48px;line-height:1.05}
+.ql-log{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:32px;align-items:start}
+.ql-list{display:grid;gap:10px}
+.ql-item{all:unset;box-sizing:border-box;cursor:pointer;display:grid;grid-template-columns:28px minmax(0,1fr);gap:4px 16px;align-items:center;padding:16px 18px;border:1px solid var(--line);border-radius:6px;background:var(--panel);min-height:64px}
+.ql-item .ql-mini{width:18px;height:18px;grid-row:span 2;justify-self:center}
+.ql-item .ql-mini span{font-size:13px}
+.ql-itemcat{font-family:"Chakra Petch",sans-serif;font-weight:600;font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--dim)}
+.ql-itemname{font-weight:700;font-size:19px;line-height:1.3}
+.ql-item:hover{border-color:var(--gold)}
+.ql-item[aria-pressed="true"]{background:var(--gold);color:var(--ongold);border-color:var(--gold)}
+.ql-item[aria-pressed="true"] .ql-itemcat{color:var(--ongold)}
+.ql-item[aria-pressed="true"] .ql-mini{background:var(--ongold);color:var(--gold)}
+.ql-detail{position:sticky;top:24px}
+.ql-dtitle{margin:0 0 12px;font-family:"Chakra Petch",sans-serif;font-weight:700;font-size:32px;line-height:1.1}
+.ql-dtext{margin:0 0 24px;font-size:19px;color:var(--dim)}
+.ql-sheet{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,7fr);gap:56px;align-items:start}
+.ql-portrait{aspect-ratio:4/5;border:2px dashed var(--line);border-radius:6px;display:grid;place-items:center;color:var(--dim);background:var(--panel);font-size:17px;text-align:center;padding:24px;box-sizing:border-box}
+.ql-stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(260px,100%),1fr));gap:2px;margin:0;background:var(--line);border:1px solid var(--line);border-radius:6px;overflow:hidden}
+.ql-stats div{background:var(--panel);padding:20px 22px}
+.ql-stats dt{font-family:"Chakra Petch",sans-serif;font-weight:600;font-size:14px;letter-spacing:.12em;text-transform:uppercase;color:var(--dim)}
+.ql-stats dd{margin:6px 0 0;font-size:20px;font-weight:500}
+.ql-sheet p{margin:24px 0 0;font-size:20px;max-width:34em}
+.ql-zones{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr));gap:20px}
+.ql-zone{border-top:4px solid var(--gold);background:var(--panel);border-radius:0 0 6px 6px;padding:24px 26px}
+.ql-zone h3{margin:0 0 6px;font-family:"Chakra Petch",sans-serif;font-weight:700;font-size:30px}
+.ql-zone p{margin:0;color:var(--dim)}
+.ql-contact{flex:1;background:var(--bg2);padding:104px 0 0;border-top:1px solid var(--line)}
+.ql-contactgrid{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:56px;align-items:start}
+.ql-contact .ql-lead{margin:0 0 28px}
+.ql-direct{font-size:20px}
+.ql-direct strong{display:block;font-family:"Chakra Petch",sans-serif;font-size:34px}
+.ql-form{display:grid;gap:18px}
+.ql-field{display:grid;gap:8px}
+.ql-field label{font-family:"Chakra Petch",sans-serif;font-weight:600;font-size:15px;letter-spacing:.06em}
+.ql-field input,.ql-field textarea{font:inherit;color:var(--text);background:var(--panel);border:1px solid var(--line);border-radius:4px;padding:14px 16px;min-height:52px;box-sizing:border-box}
+.ql-field textarea{min-height:130px;resize:vertical}
+.ql-field input:focus,.ql-field textarea:focus{outline:2px solid var(--gold);outline-offset:1px}
+.ql-foot{margin-top:96px;border-top:1px solid var(--line);padding:24px 0;display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;font-size:15px;color:var(--dim)}
+.ql-foot nav{display:flex;gap:24px}
+@media (max-width:900px){
+.ql-wrap{padding:0 20px}
+.ql-hero{padding:48px 0 72px}
+.ql-herogrid,.ql-log,.ql-sheet,.ql-contactgrid{grid-template-columns:minmax(0,1fr);gap:40px}
+.ql-h1{font-size:44px}
+.ql-marker{width:64px;height:64px;margin-bottom:36px}
+.ql-marker span{font-size:42px}
+.ql-sec,.ql-contact{padding:72px 0}
+.ql-contact{padding-bottom:0}
+.ql-h2{font-size:36px}
+.ql-detail{position:static}
+.ql-portrait{max-width:340px}
+}
+</style>
+</head>
+<body>
+<div class="ql" id="seite">
+<header class="ql-head">
+<div class="ql-wrap ql-headin">
+<a class="ql-logo" href="#start"><span class="ql-logomark" aria-hidden="true"><span>!</span></span>sidequest</a>
+<nav class="ql-nav" aria-label="Hauptnavigation">
+<a href="#quests">Questlog</a>
+<a href="#robert">Charakter</a>
+<a href="#gebiet">Spielgebiet</a>
+<a href="#kontakt">Kontakt</a>
+</nav>
+</div>
+</header>
+<main>
+<section id="start" class="ql-hero">
+<div class="ql-wrap ql-herogrid">
+<div>
+<div class="ql-marker" aria-hidden="true"><span>!</span></div>
+<p class="ql-kick">Neue Quest in deiner Nähe</p>
+<h1 class="ql-h1">Dein WLAN endet an der Kaffeemaschine.</h1>
+<p class="ql-lead">Du kümmerst dich um deinen Betrieb. Die IT-Quests übernimmt Robert, in Neuss, Jüchen und Düsseldorf.</p>
+</div>
+<div class="ql-panel" aria-live="polite">
+<div class="ql-offerhead"><span class="ql-mini" aria-hidden="true"><span>!</span></span><div><p class="ql-small">Quest verfügbar</p><p class="ql-qtitle">Das Signal bis ins Lager tragen</p></div></div>
+<dl class="ql-meta"><div><dt>Auftraggeber</dt><dd>Du</dd></div><div><dt>Ort</dt><dd>Dein Betrieb</dd></div></dl>
+<p class="ql-small">Ziele</p>
+<ul class="ql-goals"><li>Messen, wo das Signal schwach wird</li><li>Router und Zugangspunkte richtig setzen</li><li>Ein eigenes Netz für Gäste</li></ul>
+<p class="ql-small">Belohnung</p>
+<p class="ql-reward">WLAN bis ins Lager und Ruhe am Telefon.</p>
+<div id="ql-angebot"><button type="button" class="ql-btn" id="ql-annehmen">Quest an Robert geben</button></div>
+</div>
+</div>
+</section>
+<section id="quests" class="ql-sec">
+<div class="ql-wrap">
+<h2 class="ql-h2">Offene Quests</h2>
+<div class="ql-log">
+<div class="ql-list" id="ql-liste"></div>
+<div class="ql-panel ql-detail" aria-live="polite">
+<p class="ql-small" id="ql-dcat"></p>
+<h3 class="ql-dtitle" id="ql-dtitle"></h3>
+<p class="ql-dtext" id="ql-dtext"></p>
+<p class="ql-small">Ziele</p>
+<ul class="ql-goals" id="ql-dgoals"></ul>
+<p class="ql-small">Belohnung</p>
+<p class="ql-reward" id="ql-dreward"></p>
+<a class="ql-btn" href="#kontakt">Quest an Robert geben</a>
+</div>
+</div>
+</div>
+</section>
+<section id="robert" class="ql-sec">
+<div class="ql-wrap">
+<h2 class="ql-h2">Wer die Quests erledigt</h2>
+<div class="ql-sheet">
+<div class="ql-portrait">[Foto von Robert]</div>
+<div>
+<dl class="ql-stats">
+<div><dt>Name</dt><dd>Robert</dd></div>
+<div><dt>Klasse</dt><dd>IT-Allrounder</dd></div>
+<div><dt>Gebiet</dt><dd>Neuss, Jüchen, Düsseldorf</dd></div>
+<div><dt>Spezialfähigkeit</dt><dd>Erklärt Technik in Bildern, bis sie jeder vor sich sieht</dd></div>
+<div><dt>Schwäche</dt><dd>Kann an keinem blinkenden Gerät vorbeigehen</dd></div>
+<div><dt>Verbündete</dt><dd>Kleine Betriebe, in denen man sich mit Namen kennt</dd></div>
+</dl>
+<p>Robert kommt vorbei oder schaltet sich aus der Ferne dazu, je nachdem, was die Quest verlangt. Am Ende erzählt er dir in zwei Sätzen, was los war.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="gebiet" class="ql-sec">
+<div class="ql-wrap">
+<h2 class="ql-h2">Spielgebiet</h2>
+<div class="ql-zones">
+<div class="ql-zone"><h3>Neuss</h3><p>Hafen, Innenstadt und alles, was am linken Rheinufer Strom braucht.</p></div>
+<div class="ql-zone"><h3>Jüchen</h3><p>Zwischen Schloss Dyck und dem Rand des Tagebaus.</p></div>
+<div class="ql-zone"><h3>Düsseldorf</h3><p>Die große Stadt am anderen Ufer.</p></div>
+</div>
+</div>
+</section>
+</main>
+<section id="kontakt" class="ql-contact">
+<div class="ql-wrap ql-contactgrid">
+<div>
+<h2 class="ql-h2">Quest abgeben</h2>
+<p class="ql-lead">Schreib kurz, was klemmt. Robert meldet sich und sagt dir, wie er vorgeht.</p>
+<p class="ql-direct">Lieber direkt anrufen?<strong>[TELEFON]</strong></p>
+</div>
+<form class="ql-form" onsubmit="return false">
+<div class="ql-field"><label for="ql-name">Dein Name</label><input id="ql-name" name="name" autocomplete="name"></div>
+<div class="ql-field"><label for="ql-kontakt">Telefon oder E-Mail</label><input id="ql-kontakt" name="kontakt" autocomplete="email"></div>
+<div class="ql-field"><label for="ql-was">Was ist los?</label><textarea id="ql-was" name="nachricht"></textarea></div>
+<div><button type="submit" class="ql-btn">Quest an Robert geben</button></div>
+</form>
+</div>
+<div class="ql-wrap">
+<footer class="ql-foot"><span>sidequest.it, IT-Hilfe in Neuss, Jüchen und Düsseldorf</span><nav aria-label="Rechtliches"><a href="#impressum">Impressum</a><a href="#datenschutz">Datenschutz</a></nav></footer>
+</div>
+</section>
+</div>
+<script>
+(function () {
+  var seite = document.getElementById('seite');
+  if (new URLSearchParams(location.search).get('modus') === 'alt') seite.classList.add('alt');
+
+  var quests = [
+    { cat: 'Rechner und Drucker', title: 'Der Drucker im Flur blinkt orange', text: 'Seit dem Update druckt nur noch der Chef. Alle anderen schicken ihre Aufträge ins Leere.', goals: ['Drucker und Rechner einrichten', 'Treiber und Updates im Griff behalten', 'Neue Geräte startklar übergeben'], reward: 'Ein Flur, der wieder druckt.' },
+    { cat: 'Netzwerk und WLAN', title: 'Das WLAN endet an der Kaffeemaschine', text: 'Im Lager gibt es Empfang nur auf der zweiten Leitersprosse von oben.', goals: ['Messen, wo das Signal schwach wird', 'Router, Switch und Zugangspunkte setzen', 'Ein eigenes Netz für Gäste'], reward: 'Netz bis in die letzte Ecke.' },
+    { cat: 'Server und Datensicherung', title: 'Die einzige Sicherung liegt in der Schublade', text: 'Eine Festplatte, beschriftet mit Edding, zuletzt angeschlossen vor einer Weile.', goals: ['Sicherung an zwei Orten einrichten', 'Wiederherstellung regelmäßig proben', 'Server warten und überwachen'], reward: 'Ruhiger Schlaf.' },
+    { cat: 'E-Mail und Microsoft 365', title: 'Outlook fragt jeden Morgen nach dem Kennwort', text: 'Und jeden Morgen tippt es jemand ein, seufzt und fragt sich, warum.', goals: ['Postfächer und Kalender sauber einrichten', 'Microsoft 365 verwalten und absichern', 'Anmeldung mit zweitem Faktor'], reward: 'Mails, die einfach ankommen.' },
+    { cat: 'Webseiten und Hosting', title: 'Die Webseite sieht aus wie 2014', text: 'Die Öffnungszeiten stimmen nicht mehr, und das Kontaktformular schickt Mails an jemanden, der nicht mehr da ist.', goals: ['WordPress-Seite bauen oder auffrischen', 'Hosting, Updates und Sicherungen', 'Texte, die nach dir klingen'], reward: 'Eine Seite, auf die du gern verlinkst.' }
+  ];
+
+  var liste = document.getElementById('ql-liste');
+  var aktiv = 1;
+
+  function li(t) { var e = document.createElement('li'); e.textContent = t; return e; }
+
+  function zeige() {
+    var q = quests[aktiv];
+    document.getElementById('ql-dcat').textContent = q.cat;
+    document.getElementById('ql-dtitle').textContent = q.title;
+    document.getElementById('ql-dtext').textContent = q.text;
+    var g = document.getElementById('ql-dgoals'); g.textContent = '';
+    q.goals.forEach(function (z) { g.append(li(z)); });
+    document.getElementById('ql-dreward').textContent = q.reward;
+    liste.querySelectorAll('.ql-item').forEach(function (b, i) { b.setAttribute('aria-pressed', i === aktiv ? 'true' : 'false'); });
+  }
+
+  quests.forEach(function (q, i) {
+    var b = document.createElement('button');
+    b.type = 'button'; b.className = 'ql-item';
+    b.innerHTML = '<span class="ql-mini" aria-hidden="true"><span>!</span></span><span class="ql-itemcat"></span><span class="ql-itemname"></span>';
+    b.querySelector('.ql-itemcat').textContent = q.cat;
+    b.querySelector('.ql-itemname').textContent = q.title;
+    b.addEventListener('click', function () { aktiv = i; zeige(); });
+    liste.append(b);
+  });
+  zeige();
+
+  document.getElementById('ql-annehmen').addEventListener('click', function () {
+    var box = document.getElementById('ql-angebot');
+    box.innerHTML = '<p class="ql-done">Angenommen. Ruf Robert an unter [TELEFON] oder schreib ihm unten, dann zieht er los.</p>';
+  });
+})();
+</script>
+</body>
+</html>

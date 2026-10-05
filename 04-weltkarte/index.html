@@ -1,0 +1,214 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>sidequest · Entwurf 4: Weltkarte</title>
+<link rel="stylesheet" href="../assets/fonts/fonts.css">
+<style>
+body{margin:0}
+.wk{--paper:#E4E9DD;--land:#D5DEC9;--ink:#22302A;--soft:#4A5850;--water:#2E6D9C;--pin:#C81F5A;--onpin:#FFF4F7;--hatch:#97A28F;--card:#EEF2E8;
+background:var(--paper);color:var(--ink);font-family:"Karla",system-ui,sans-serif;font-size:18px;line-height:1.55;min-height:100vh;display:flex;flex-direction:column}
+.wk.alt{--paper:#122019;--land:#1A2B24;--ink:#DCE6DA;--soft:#9FB0A5;--water:#6AA6D8;--pin:#FF5C8F;--onpin:#22050F;--hatch:#3D5047;--card:#18271F}
+.wk a{color:var(--ink)}
+.wk :focus-visible{outline:3px solid var(--pin);outline-offset:3px}
+.wk-wrap{width:100%;max-width:1320px;margin:0 auto;padding:0 40px;box-sizing:border-box}
+.wk-fell{font-family:"IM Fell English SC","IM Fell English",Georgia,serif;font-weight:400}
+.wk-head{display:flex;align-items:center;justify-content:space-between;gap:8px 24px;min-height:80px;flex-wrap:wrap}
+.wk .wk-logo{font-family:"IM Fell English SC",Georgia,serif;font-size:32px;text-decoration:none;letter-spacing:.02em}
+.wk-nav{display:flex;gap:4px 28px;flex-wrap:wrap}
+.wk .wk-nav a{text-decoration:none;font-weight:600;font-size:17px;padding:10px 0}
+.wk .wk-nav a:hover{color:var(--pin)}
+.wk-mapwrap{position:relative;margin-top:8px}
+.wk-map{position:relative;aspect-ratio:5/3;border:2px solid var(--ink);outline:1px solid var(--ink);outline-offset:6px;background:var(--land);overflow:hidden}
+.wk-svg{position:absolute;inset:0;width:100%;height:100%;display:block}
+.wk-svg .land{fill:var(--land)}
+.wk-svg .river{fill:none;stroke:var(--water);stroke-linecap:round}
+.wk-svg .rhein{stroke-width:22}
+.wk-svg .erft{stroke-width:7}
+.wk-svg .weg{fill:none;stroke:var(--ink);stroke-width:3.5;stroke-dasharray:1 11;stroke-linecap:round}
+.wk-svg .grube{fill:url(#wk-schraffur);stroke:var(--ink);stroke-width:1.5;stroke-dasharray:6 5}
+.wk-svg .schraffur{stroke:var(--hatch);stroke-width:2}
+.wk-svg .baum{fill:var(--ink);opacity:.75}
+.wk-svg .stadt{fill:var(--paper);stroke:var(--ink);stroke-width:3}
+.wk-svg .lbl{fill:var(--ink);font-family:"IM Fell English SC",Georgia,serif;paint-order:stroke;stroke:var(--land);stroke-width:6px;stroke-linejoin:round}
+.wk-svg .gross{font-size:30px}
+.wk-svg .klein{font-size:17px;fill:var(--soft)}
+.wk-svg .wasser{fill:var(--water);font-family:"IM Fell English",Georgia,serif;font-style:italic;font-size:24px;paint-order:stroke;stroke:var(--land);stroke-width:6px}
+.wk-svg .rand{fill:var(--soft);font-family:"IM Fell English",Georgia,serif;font-style:italic;font-size:22px}
+.wk-svg .kompass{fill:var(--paper);stroke:var(--ink);stroke-width:2}
+.wk-svg .nadel{fill:var(--pin)}
+.wk-cartouche{position:absolute;left:28px;top:28px;max-width:420px;background:var(--paper);border:2px solid var(--ink);padding:26px 28px;box-sizing:border-box;z-index:2}
+.wk-cartouche h1{margin:0 0 12px;font-family:"IM Fell English SC",Georgia,serif;font-weight:400;font-size:38px;line-height:1.08}
+.wk-cartouche p{margin:0 0 20px;font-size:18px;color:var(--soft)}
+.wk .wk-btn{display:inline-flex;align-items:center;min-height:50px;padding:0 24px;background:var(--pin);color:var(--onpin);text-decoration:none;font-weight:700;font-size:17px;letter-spacing:.02em}
+.wk .wk-btn:hover{background:var(--ink);color:var(--paper)}
+.wk-pin{all:unset;box-sizing:border-box;cursor:pointer;position:absolute;z-index:1;display:flex;align-items:center;gap:10px;min-height:44px;padding:0 12px 0 0;transform:translate(-22px,-50%)}
+.wk-pinmark{width:44px;height:44px;display:grid;place-items:center;flex:none}
+.wk-pinmark::before{content:"";width:22px;height:22px;background:var(--pin);border:3px solid var(--paper);transform:rotate(45deg);box-shadow:0 0 0 2px var(--pin)}
+.wk-pinlbl{font-family:"IM Fell English SC",Georgia,serif;font-size:21px;background:var(--paper);padding:2px 10px;border:1px solid var(--ink);white-space:nowrap}
+.wk-pin:hover .wk-pinlbl,.wk-pin[aria-pressed="true"] .wk-pinlbl{background:var(--pin);color:var(--onpin);border-color:var(--pin)}
+.wk-pin[aria-pressed="true"] .wk-pinmark::before{width:28px;height:28px}
+.wk-legend{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:56px;padding:64px 0 96px;align-items:start}
+.wk-detail{background:var(--card);border:2px solid var(--ink);padding:28px 30px}
+.wk-detail .wk-dcat{margin:0 0 6px;font-weight:700;font-size:15px;letter-spacing:.1em;text-transform:uppercase;color:var(--pin)}
+.wk-detail h2{margin:0 0 12px;font-family:"IM Fell English SC",Georgia,serif;font-weight:400;font-size:40px;line-height:1.05}
+.wk-detail p{margin:0;font-size:19px}
+.wk-h2{margin:0 0 20px;font-family:"IM Fell English SC",Georgia,serif;font-weight:400;font-size:48px;line-height:1.05}
+.wk-places{margin:0;padding:0;list-style:none;display:grid;gap:18px}
+.wk-places li{display:grid;grid-template-columns:200px minmax(0,1fr);gap:4px 24px;align-items:baseline;padding-top:16px;border-top:1px solid var(--hatch)}
+.wk-places b{font-family:"IM Fell English SC",Georgia,serif;font-weight:400;font-size:24px}
+.wk-places span{color:var(--soft)}
+.wk-sec{padding:96px 0;border-top:2px solid var(--ink)}
+.wk-maker{display:grid;grid-template-columns:minmax(0,3fr) minmax(0,7fr);gap:56px;align-items:start}
+.wk-photo{aspect-ratio:4/5;border:2px dashed var(--hatch);display:grid;place-items:center;color:var(--soft);font-size:17px;text-align:center;padding:24px;box-sizing:border-box;background:var(--card)}
+.wk-maker p{margin:0 0 18px;font-size:21px;max-width:32em}
+.wk-contact{flex:1;background:var(--ink);color:var(--paper);padding:96px 0 0}
+.wk-contact a{color:var(--paper)}
+.wk-contactgrid{display:grid;grid-template-columns:minmax(0,6fr) minmax(0,5fr);gap:56px;align-items:end}
+.wk-contact .wk-h2{font-size:56px}
+.wk-contact p{margin:0;font-size:21px;max-width:30em;opacity:.9}
+.wk-lines{display:grid;gap:8px;font-size:26px}
+.wk-lines span{display:block;font-size:15px;letter-spacing:.1em;text-transform:uppercase;opacity:.75}
+.wk-contact .wk-btn{background:var(--pin);color:var(--onpin);margin-top:16px;justify-self:start}
+.wk-foot{margin-top:96px;padding:24px 0;border-top:1px solid color-mix(in srgb,var(--paper) 25%,transparent);display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;font-size:15px}
+.wk-foot nav{display:flex;gap:24px}
+@media (max-width:900px){
+.wk-wrap{padding:0 16px}
+.wk-cartouche{position:static;max-width:none;margin-bottom:20px}
+.wk-cartouche h1{font-size:32px}
+.wk-pinlbl{display:none}
+.wk-pin{padding:0}
+.wk-pinmark::before{width:16px;height:16px}
+.wk-svg .gross{font-size:40px}
+.wk-svg .klein,.wk-svg .rand,.wk-svg .wasser{display:none}
+.wk-legend,.wk-maker,.wk-contactgrid{grid-template-columns:minmax(0,1fr);gap:32px}
+.wk-places li{grid-template-columns:minmax(0,1fr)}
+.wk-sec,.wk-contact{padding-top:64px}
+.wk-sec{padding-bottom:64px}
+.wk-h2,.wk-contact .wk-h2{font-size:38px}
+.wk-photo{max-width:340px}
+}
+</style>
+</head>
+<body>
+<div class="wk" id="seite">
+<div class="wk-wrap">
+<header class="wk-head">
+<a class="wk-logo" href="#start">sidequest.it</a>
+<nav class="wk-nav" aria-label="Hauptnavigation">
+<a href="#legende">Legende</a>
+<a href="#kartograph">Kartograph</a>
+<a href="#kontakt">Kontakt</a>
+</nav>
+</header>
+</div>
+<main>
+<section id="start" class="wk-wrap">
+<div class="wk-mapwrap">
+<div class="wk-cartouche">
+<h1>Karte der IT-Hilfe zwischen Jüchen und Düsseldorf</h1>
+<p>Robert kennt jeden Weg zwischen deinem Router und deinem Drucker. Tipp auf einen Ort.</p>
+<a class="wk-btn" href="#kontakt">Robert anrufen</a>
+</div>
+<div class="wk-map">
+<svg class="wk-svg" viewBox="0 0 1000 600" preserveAspectRatio="xMidYMid meet" aria-hidden="true" focusable="false">
+<defs><pattern id="wk-schraffur" width="9" height="9" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><line x1="0" y1="0" x2="0" y2="9" class="schraffur"></line></pattern></defs>
+<rect class="land" x="0" y="0" width="1000" height="600"></rect>
+<ellipse class="grube" cx="125" cy="355" rx="95" ry="56"></ellipse>
+<text class="lbl klein" x="125" y="436" text-anchor="middle">Tagebau Garzweiler</text>
+<path class="river erft" d="M 330 600 C 375 535, 420 475, 470 428 S 585 362, 664 334"></path>
+<text class="wasser" x="482" y="478" transform="rotate(-38 482 478)">Erft</text>
+<path class="river rhein" d="M 940 600 C 862 522, 724 470, 692 382 S 642 262, 682 180 S 724 62, 652 0"></path>
+<text class="wasser" x="606" y="470">Rhein</text>
+<path class="weg" d="M 262 470 C 330 432, 430 382, 548 318 S 700 252, 772 228"></path>
+<g class="baum">
+<path d="M 272 572 l 9 -22 l 9 22 z"></path><path d="M 294 556 l 9 -22 l 9 22 z"></path><path d="M 318 576 l 9 -22 l 9 22 z"></path><path d="M 340 558 l 9 -22 l 9 22 z"></path><path d="M 250 590 l 9 -22 l 9 22 z"></path><path d="M 362 582 l 9 -22 l 9 22 z"></path>
+</g>
+<circle class="stadt" cx="258" cy="474" r="10"></circle>
+<text class="lbl gross" x="244" y="520" text-anchor="end">Jüchen</text>
+<circle class="stadt" cx="552" cy="318" r="12"></circle>
+<text class="lbl gross" x="534" y="300" text-anchor="end">Neuss</text>
+<circle class="stadt" cx="776" cy="226" r="14"></circle>
+<text class="lbl gross" x="796" y="214">Düsseldorf</text>
+<text class="rand" x="28" y="584">Hier endet das WLAN.</text>
+<g transform="translate(948 470)"><circle class="kompass" r="34"></circle><path class="nadel" d="M 0 -30 L 9 0 L 0 30 L -9 0 Z"></path><text class="lbl klein" y="-44" text-anchor="middle">N</text></g>
+</svg>
+<button type="button" class="wk-pin" data-ort="0" style="left:48%;top:61%"><span class="wk-pinmark"></span><span class="wk-pinlbl">Druckerschlucht</span></button>
+<button type="button" class="wk-pin" data-ort="1" style="left:38%;top:88.5%"><span class="wk-pinmark"></span><span class="wk-pinlbl">WLAN-Wald</span></button>
+<button type="button" class="wk-pin" data-ort="2" style="left:85%;top:63%"><span class="wk-pinmark"></span><span class="wk-pinlbl">Burg Sicherung</span></button>
+<button type="button" class="wk-pin" data-ort="3" style="left:80%;top:20%"><span class="wk-pinmark"></span><span class="wk-pinlbl">Posthalterei</span></button>
+<button type="button" class="wk-pin" data-ort="4" style="left:64%;top:50%"><span class="wk-pinmark"></span><span class="wk-pinlbl">Webhafen</span></button>
+</div>
+</div>
+<div id="legende" class="wk-legend">
+<div class="wk-detail" aria-live="polite">
+<p class="wk-dcat" id="wk-dcat"></p>
+<h2 id="wk-dname"></h2>
+<p id="wk-dtext"></p>
+</div>
+<div>
+<h2 class="wk-h2">Legende</h2>
+<ul class="wk-places">
+<li><b>Druckerschlucht</b><span>Rechner und Drucker einrichten, Treiber pflegen, Updates einspielen.</span></li>
+<li><b>WLAN-Wald</b><span>Netzwerk und WLAN, das bis in die hinterste Ecke reicht, mit eigenem Netz für Gäste.</span></li>
+<li><b>Burg Sicherung</b><span>Server und Datensicherung an zwei Orten, die Wiederherstellung regelmäßig geprobt.</span></li>
+<li><b>Posthalterei</b><span>E-Mail, Kalender und Microsoft 365, mit zweitem Faktor geschützt.</span></li>
+<li><b>Webhafen</b><span>WordPress-Webseiten bauen, pflegen und hosten.</span></li>
+</ul>
+</div>
+</div>
+</section>
+<section id="kartograph" class="wk-sec">
+<div class="wk-wrap wk-maker">
+<div class="wk-photo">[Foto von Robert]</div>
+<div>
+<h2 class="wk-h2">Der Kartograph</h2>
+<p>Robert zeichnet dir dein Netzwerk so auf, dass du es verstehst: wo der Strom ins Haus kommt, wo das Signal abbiegt und an welcher Wand es müde wird.</p>
+<p>Danach baut er die Wege, die fehlen, und lässt dir die Karte da.</p>
+</div>
+</div>
+</section>
+</main>
+<section id="kontakt" class="wk-contact">
+<div class="wk-wrap wk-contactgrid">
+<div>
+<h2 class="wk-h2">Wegbeschreibung zu Robert</h2>
+<p>Ruf an oder schreib. Robert kommt zu dir nach Neuss, Jüchen oder Düsseldorf, und in die Orte dazwischen.</p>
+</div>
+<div class="wk-lines">
+<p style="margin:0"><span>Telefon</span>[TELEFON]</p>
+<p style="margin:0"><span>E-Mail</span>[E-MAIL]</p>
+<a class="wk-btn" href="tel:[TELEFON]">Robert anrufen</a>
+</div>
+</div>
+<div class="wk-wrap">
+<footer class="wk-foot"><span>sidequest.it, IT-Hilfe in Neuss, Jüchen und Düsseldorf</span><nav aria-label="Rechtliches"><a href="#impressum">Impressum</a><a href="#datenschutz">Datenschutz</a></nav></footer>
+</div>
+</section>
+</div>
+<script>
+(function () {
+  var seite = document.getElementById('seite');
+  if (new URLSearchParams(location.search).get('modus') === 'alt') seite.classList.add('alt');
+  var orte = [
+    { name: 'Druckerschlucht', cat: 'Rechner und Drucker', text: 'Hier verschwinden Druckaufträge und tauchen als Testseiten wieder auf. Robert holt sie zurück, richtet Rechner ein und hält Treiber und Updates im Griff.' },
+    { name: 'WLAN-Wald', cat: 'Netzwerk und WLAN', text: 'Dichtes Gehölz aus Wänden, Regalen und Mikrowellen. Robert misst, wo das Signal müde wird, und setzt Router und Zugangspunkte so, dass es bis ins Lager reicht.' },
+    { name: 'Burg Sicherung', cat: 'Server und Datensicherung', text: 'Zwei Schlüssel, zwei Orte, eine Probe in regelmäßigen Abständen. Robert wartet deinen Server und sorgt dafür, dass sich jede Datei zurückholen lässt.' },
+    { name: 'Posthalterei', cat: 'E-Mail und Microsoft 365', text: 'Hier kommen Mails an, Kalender treffen sich und Konten bekommen einen zweiten Schlüssel. Robert richtet Microsoft 365 ein und hält es sauber.' },
+    { name: 'Webhafen', cat: 'Webseiten und Hosting', text: 'Am Neusser Hafen legen Webseiten an. Robert baut deine WordPress-Seite, hostet sie und hält sie aktuell.' }
+  ];
+  var pins = document.querySelectorAll('.wk-pin');
+  function zeige(i) {
+    document.getElementById('wk-dcat').textContent = orte[i].cat;
+    document.getElementById('wk-dname').textContent = orte[i].name;
+    document.getElementById('wk-dtext').textContent = orte[i].text;
+    pins.forEach(function (p) { p.setAttribute('aria-pressed', String(Number(p.dataset.ort) === i)); });
+  }
+  pins.forEach(function (p) { p.addEventListener('click', function () { zeige(Number(p.dataset.ort)); }); });
+  zeige(1);
+})();
+</script>
+</body>
+</html>

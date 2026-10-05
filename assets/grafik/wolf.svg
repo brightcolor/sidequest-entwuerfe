@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" role="img" aria-label="Wolfskopf, geometrisch">
+  <title>Wolfskopf (Entwurf 10: Rudel)</title>
+  <polygon points="20,8 48,38 16,54" fill="#172238"/>
+  <polygon points="100,8 72,38 104,54" fill="#172238"/>
+  <polygon points="25,20 41,38 22,47" fill="#33415F"/>
+  <polygon points="95,20 79,38 98,47" fill="#33415F"/>
+  <polygon points="16,54 44,34 76,34 104,54 94,84 60,114 26,84" fill="#172238"/>
+  <polygon points="54,36 66,36 60,64" fill="#2A3754"/>
+  <polygon points="44,74 76,74 60,108" fill="#E9EDF4"/>
+  <polygon points="34,60 47,57 43,66" fill="#F2B230"/>
+  <polygon points="86,60 73,57 77,66" fill="#F2B230"/>
+  <polygon points="54,100 66,100 60,108" fill="#172238"/>
+</svg>

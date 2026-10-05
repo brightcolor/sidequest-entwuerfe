@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>sidequest · Entwurf 8: Zine</title>
+<link rel="stylesheet" href="../assets/fonts/fonts.css">
+<style>
+body{margin:0}
+.zn{--table:#D8D8D1;--paper:#F4F4EF;--toner:#161616;--blue:#2F56B0;--yellow:#FFF04A;--onyellow:#161616;--grey:#55554F;--dot:rgba(22,22,22,.07);
+background:var(--table);color:var(--toner);font-family:"Special Elite","Courier New",monospace;font-size:19px;line-height:1.6;min-height:100vh;display:flex;flex-direction:column}
+.zn.alt{--table:#0D0D0C;--paper:#1D1D1B;--toner:#ECECE4;--blue:#8CA9FF;--grey:#B1B1A8;--dot:rgba(236,236,228,.06)}
+.zn a{color:var(--toner)}
+.zn :focus-visible{outline:3px dashed var(--blue);outline-offset:4px}
+.zn-wrap{width:100%;max-width:1180px;margin:0 auto;padding:0 32px;box-sizing:border-box}
+.zn-marker{font-family:"Permanent Marker","Comic Sans MS",cursive;font-weight:400}
+.zn-hand{font-family:"Shadows Into Light","Comic Sans MS",cursive;color:var(--blue)}
+.zn-head{display:flex;justify-content:space-between;align-items:center;gap:8px 24px;min-height:80px;flex-wrap:wrap}
+.zn .zn-logo{font-family:"Permanent Marker",cursive;font-size:28px;text-decoration:none}
+.zn-nav{display:flex;gap:4px 24px;flex-wrap:wrap}
+.zn .zn-nav a{font-size:17px;padding:10px 0;text-decoration-thickness:2px;text-underline-offset:5px}
+.zn-sheet{position:relative;background-color:var(--paper);background-image:radial-gradient(var(--dot) 1px,transparent 1.2px);background-size:5px 5px;box-shadow:0 2px 0 rgba(0,0,0,.06),0 18px 40px -22px rgba(0,0,0,.45);padding:56px 60px;box-sizing:border-box}
+.zn-tape{position:absolute;width:132px;height:34px;background:rgba(255,240,74,.62);box-shadow:0 1px 2px rgba(0,0,0,.12);z-index:2}
+.zn-cover{transform:rotate(-.5deg);margin:24px 0 72px;padding:64px 64px 72px}
+.zn-cover .zn-tape.a{top:-14px;left:56px;transform:rotate(-6deg)}
+.zn-cover .zn-tape.b{top:-12px;right:72px;transform:rotate(5deg)}
+.zn-issue{margin:0 0 20px;font-size:30px}
+.zn-ransom{margin:0;display:flex;flex-wrap:wrap;gap:8px 10px;align-items:center;line-height:1}
+.zn-ransom span{display:inline-grid;place-items:center;min-width:.8em;padding:.06em .14em;font-size:88px}
+.zn-r1{background:var(--toner);color:var(--paper);font-family:"Permanent Marker",cursive;transform:rotate(-4deg)}
+.zn-r2{background:var(--yellow);color:var(--onyellow);font-family:"Special Elite",monospace;transform:rotate(3deg)}
+.zn-r3{background:var(--blue);color:#FFFFFF;font-family:"Special Elite",monospace;transform:rotate(-2deg)}
+.zn-r4{border:4px solid var(--toner);font-family:"Permanent Marker",cursive;transform:rotate(5deg)}
+.zn-r5{background:var(--toner);color:var(--paper);font-family:"Special Elite",monospace;transform:rotate(-3deg)}
+.zn-r6{background:var(--yellow);color:var(--onyellow);font-family:"Permanent Marker",cursive;transform:rotate(2deg)}
+.zn-r7{background:var(--blue);color:#FFFFFF;font-family:"Permanent Marker",cursive;transform:rotate(-5deg)}
+.zn-r8{border:4px solid var(--toner);font-family:"Special Elite",monospace;transform:rotate(3deg)}
+.zn-r9{background:var(--toner);color:var(--paper);font-family:"Permanent Marker",cursive;transform:rotate(-2deg)}
+.zn-coverrow{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,4fr);gap:40px;align-items:end;margin-top:48px}
+.zn-coverrow h1{margin:0 0 14px;font-family:"Special Elite",monospace;font-weight:400;font-size:34px;line-height:1.25}
+.zn-coverrow p{margin:0;font-size:20px;max-width:32em}
+.zn-coverrow .zn-note{font-size:32px;line-height:1.15;transform:rotate(-3deg);margin:0 0 28px}
+.zn .zn-btn{display:inline-flex;align-items:center;min-height:58px;padding:0 26px;background:var(--yellow);color:var(--onyellow);border:3px solid var(--onyellow);text-decoration:none;font-family:"Permanent Marker",cursive;font-size:24px;transform:rotate(-1.5deg);box-shadow:5px 5px 0 var(--onyellow)}
+.zn .zn-btn:hover{transform:rotate(0)}
+.zn-spread{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:28px;margin-bottom:72px}
+.zn-spread .zn-sheet:first-child{transform:rotate(.6deg)}
+.zn-spread .zn-sheet:last-child{transform:rotate(-.8deg)}
+.zn-h2{margin:0 0 28px;font-family:"Permanent Marker",cursive;font-weight:400;font-size:46px;line-height:1.05}
+.zn-h2 mark{background:linear-gradient(transparent 52%,var(--yellow) 52% 90%,transparent 90%);color:inherit;padding:0 4px}
+.zn-checks{margin:0;padding:0;list-style:none;display:grid;gap:22px}
+.zn-checks li{display:grid;grid-template-columns:38px minmax(0,1fr);gap:2px 14px}
+.zn-box{grid-row:span 2;width:28px;height:28px;border:3px solid var(--toner);position:relative;margin-top:3px}
+.zn-box::after{content:"x";position:absolute;left:3px;top:-14px;font-family:"Permanent Marker",cursive;font-size:34px;color:var(--blue);line-height:1}
+.zn-checks b{font-weight:400;font-size:21px;text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:4px}
+.zn-checks span{font-size:17px}
+.zn-checks i{font-style:normal;font-family:"Shadows Into Light",cursive;color:var(--blue);font-size:22px;margin-left:6px}
+.zn-polaroid{position:relative;background:#FBFBF8;padding:14px 14px 56px;width:min(300px,100%);box-sizing:border-box;transform:rotate(-3deg);box-shadow:0 10px 24px -14px rgba(0,0,0,.6);margin:8px 0 28px}
+.zn-polaroid .zn-tape{top:-16px;left:50%;margin-left:-66px;transform:rotate(2deg)}
+.zn-polaroid div{aspect-ratio:1;background:#E3E3DD;display:grid;place-items:center;color:#55554F;font-size:16px}
+.zn-polaroid p{position:absolute;left:0;right:0;bottom:12px;margin:0;text-align:center;font-family:"Shadows Into Light",cursive;font-size:24px;color:#2F56B0}
+.zn-text p{margin:0 0 16px;font-size:19px}
+.zn-aside{font-size:26px;transform:rotate(-2deg);margin:4px 0 0}
+.zn-where{display:flex;flex-direction:column;gap:22px;align-items:flex-start;font-family:"Permanent Marker",cursive;font-size:56px;line-height:1}
+.zn-where span{padding:10px 26px;border:3px solid var(--blue);border-radius:52% 48% 46% 54% / 60% 44% 56% 40%}
+.zn-where span:nth-child(2){margin-left:60px;transform:rotate(-2deg)}
+.zn-where span:nth-child(3){margin-left:20px;transform:rotate(1.5deg)}
+.zn-back{display:flex;flex-direction:column;padding-bottom:0}
+.zn-back h2{margin:0 0 10px;font-family:"Permanent Marker",cursive;font-weight:400;font-size:56px;line-height:1}
+.zn-back > p{margin:0 0 24px;font-size:19px}
+.zn-tabs{display:grid;grid-template-columns:repeat(8,minmax(0,1fr));border-top:2px dashed var(--toner);margin:auto -60px 0;padding:0 30px}
+.zn-tabs span{writing-mode:vertical-rl;transform:rotate(180deg);text-align:left;padding:16px 0;height:190px;border-left:2px dashed var(--toner);font-size:16px;display:flex;align-items:center;justify-content:flex-end;box-sizing:border-box}
+.zn-tabs span:first-child{border-left:0}
+.zn-tabs span:last-child{border-right:0}
+.zn-foot{flex:1;padding:8px 0 40px}
+.zn-footin{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;font-size:16px;color:var(--grey)}
+.zn-footin nav{display:flex;gap:24px}
+@media (max-width:900px){
+.zn-wrap{padding:0 14px}
+.zn-sheet{padding:40px 24px}
+.zn-cover{padding:44px 22px 48px;margin-bottom:44px}
+.zn-ransom span{font-size:52px}
+.zn-coverrow,.zn-spread{grid-template-columns:minmax(0,1fr)}
+.zn-coverrow h1{font-size:25px}
+.zn-spread{gap:44px;margin-bottom:44px}
+.zn-h2{font-size:36px}
+.zn-where{font-size:40px}
+.zn-where span:nth-child(2){margin-left:24px}
+.zn-tabs{margin:24px -24px 0;padding:0 8px}
+.zn-tabs span{font-size:13px;height:160px}
+}
+</style>
+</head>
+<body>
+<div class="zn" id="seite">
+<div class="zn-wrap">
+<header class="zn-head">
+<a class="zn-logo" href="#start">sidequest.it</a>
+<nav class="zn-nav" aria-label="Hauptnavigation">
+<a href="#was">Was</a>
+<a href="#wer">Wer</a>
+<a href="#wo">Wo</a>
+<a href="#kontakt">Kontakt</a>
+</nav>
+</header>
+<main>
+<section id="start" class="zn-sheet zn-cover">
+<span class="zn-tape a" aria-hidden="true"></span><span class="zn-tape b" aria-hidden="true"></span>
+<p class="zn-issue zn-hand">Ausgabe #1</p>
+<p class="zn-ransom" role="img" aria-label="sidequest"><span class="zn-r1" aria-hidden="true">S</span><span class="zn-r2" aria-hidden="true">I</span><span class="zn-r3" aria-hidden="true">D</span><span class="zn-r4" aria-hidden="true">E</span><span class="zn-r5" aria-hidden="true">Q</span><span class="zn-r6" aria-hidden="true">U</span><span class="zn-r7" aria-hidden="true">E</span><span class="zn-r8" aria-hidden="true">S</span><span class="zn-r9" aria-hidden="true">T</span></p>
+<div class="zn-coverrow">
+<div>
+<h1>Was tun, wenn der Drucker spinnt?</h1>
+<p>Ein Heft über IT für kleine Betriebe in Neuss, Jüchen und Düsseldorf. Geschrieben von Robert. Kopieren und weitergeben ausdrücklich erlaubt.</p>
+</div>
+<div>
+<p class="zn-note zn-hand">ja, der Drucker. immer der Drucker.</p>
+<a class="zn-btn" href="#kontakt">Robert anrufen</a>
+</div>
+</div>
+</section>
+<div class="zn-spread">
+<section id="was" class="zn-sheet">
+<h2 class="zn-h2">Was Robert <mark>repariert</mark></h2>
+<ul class="zn-checks">
+<li><span class="zn-box" aria-hidden="true"></span><b>Rechner und Drucker</b><span>Einrichten, Treiber pflegen, Updates einspielen.<i>der blinkende Kasten im Flur</i></span></li>
+<li><span class="zn-box" aria-hidden="true"></span><b>Netzwerk und WLAN</b><span>Router, Zugangspunkte, Netz für Gäste.<i>bis in den hintersten Raum</i></span></li>
+<li><span class="zn-box" aria-hidden="true"></span><b>Server und Sicherung</b><span>Sicherung an zwei Orten, Wiederherstellung geprobt.<i>zwei Schlüssel!</i></span></li>
+<li><span class="zn-box" aria-hidden="true"></span><b>Mail und Microsoft 365</b><span>Postfächer, Kalender, zweiter Faktor.<i>Outlook auch</i></span></li>
+<li><span class="zn-box" aria-hidden="true"></span><b>Webseiten und Hosting</b><span>WordPress bauen, pflegen und hosten.<i>und die Texte dazu</i></span></li>
+</ul>
+</section>
+<section id="wer" class="zn-sheet">
+<h2 class="zn-h2">Wer schreibt hier?</h2>
+<div class="zn-polaroid"><span class="zn-tape" aria-hidden="true"></span><div>[Foto von Robert]</div><p>Robert</p></div>
+<div class="zn-text">
+<p>Robert erklärt Technik in Bildern. Bei ihm ist der Router ein Pförtner, der jeden Besucher kennt, und die Datensicherung ein Schließfach im Keller, zu dem es zwei Schlüssel gibt.</p>
+<p>Er kommt vorbei, hört zu und schreibt dir am Ende auf, was er gemacht hat.</p>
+</div>
+<p class="zn-aside zn-hand">(er meint das ernst)</p>
+</section>
+</div>
+<div class="zn-spread">
+<section id="wo" class="zn-sheet">
+<h2 class="zn-h2">Wo?</h2>
+<p class="zn-where" style="margin:0"><span>Neuss</span><span>Jüchen</span><span>Düsseldorf</span></p>
+<p class="zn-hand" style="font-size:26px;margin:28px 0 0">und alles dazwischen</p>
+</section>
+<section id="kontakt" class="zn-sheet zn-back">
+<h2>IT kaputt?<br>Robert hilft.</h2>
+<p>Ruf an oder schreib eine Mail an [E-MAIL]. Zum Mitnehmen: einen Zettel abreißen.</p>
+<a class="zn-btn" href="tel:[TELEFON]" style="align-self:flex-start;margin-bottom:36px">Robert anrufen</a>
+<div class="zn-tabs" aria-label="Abreißzettel mit Telefonnummer">
+<span>Robert [TELEFON]</span><span>Robert [TELEFON]</span><span>Robert [TELEFON]</span><span>Robert [TELEFON]</span><span>Robert [TELEFON]</span><span>Robert [TELEFON]</span><span>Robert [TELEFON]</span><span>Robert [TELEFON]</span>
+</div>
+</section>
+</div>
+</main>
+</div>
+<footer class="zn-foot">
+<div class="zn-wrap zn-footin"><span>sidequest.it, IT-Hilfe in Neuss, Jüchen und Düsseldorf</span><nav aria-label="Rechtliches"><a href="#impressum">Impressum</a><a href="#datenschutz">Datenschutz</a></nav></div>
+</footer>
+</div>
+<script>
+if (new URLSearchParams(location.search).get('modus') === 'alt') document.getElementById('seite').classList.add('alt');
+</script>
+</body>
+</html>
