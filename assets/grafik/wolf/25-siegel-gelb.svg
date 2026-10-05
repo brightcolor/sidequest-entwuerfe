@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" role="img" aria-label="sidequest Wolf, Variante 25-siegel, gelb"><title>sidequest Wolf, Variante 25-siegel, gelb</title><defs>
+<path id="w25-oben-gelb" d="M15 60 A45 45 0 0 1 105 60"/>
+<path id="w25-unten-gelb" d="M8.5 60 A51.5 51.5 0 0 0 111.5 60"/>
+<mask id="w25-m-gelb" maskUnits="userSpaceOnUse" x="0" y="0" width="120" height="120">
+<rect width="120" height="120" fill="#fff"/>
+<path transform="matrix(.52 0 0 .52 28.8 28.5)" d="M60 31 C64 31 68 32 71 34 L83.5 12.5 Q86 9 88 13 L99 44 C105 51 109 59 110 67 L104 70 C106 76 105 82 101 87 C92 99 76 108 60 116 C44 108 28 99 19 87 C15 82 14 76 16 70 L10 67 C11 59 15 51 21 44 L32 13 Q34 9 36.5 12.5 L49 34 C52 32 56 31 60 31 Z" fill="#000"/>
+</mask>
+</defs>
+<circle cx="60" cy="60" r="56.5" fill="none" stroke="#172238" stroke-width="2"/>
+<circle cx="60" cy="60" r="40" fill="#172238" mask="url(#w25-m-gelb)"/>
+<g transform="matrix(.52 0 0 .52 28.8 28.5)">
+<path d="M37 58 Q44 52.5 51 58.5 Q44 61.5 37 58 Z M83 58 Q76 52.5 69 58.5 Q76 61.5 83 58 Z" fill="#172238"/>
+<path d="M51.5 64 C52.5 76 54 88 56 98 M68.5 64 C67.5 76 66 88 64 98 M36 22 L45 36 M84 22 L75 36" fill="none" stroke="#172238" stroke-width="4.4" stroke-linecap="round"/>
+<path d="M53 99 Q60 96 67 99 Q64 106 60 107 Q56 106 53 99 Z" fill="#172238"/>
+</g>
+<text fill="#172238" font-family="Figtree, Arial, sans-serif" font-weight="700" font-size="9" letter-spacing="2.4" text-anchor="middle"><textPath href="#w25-oben-gelb" startOffset="50%">SIDEQUEST</textPath></text>
+<text fill="#172238" font-family="Figtree, Arial, sans-serif" font-weight="700" font-size="6.4" letter-spacing=".9" text-anchor="middle"><textPath href="#w25-unten-gelb" startOffset="50%">NEUSS · JÜCHEN · DÜSSELDORF</textPath></text>
+<circle cx="11.5" cy="60" r="1.8" fill="#FFFFFF"/><circle cx="108.5" cy="60" r="1.8" fill="#FFFFFF"/></svg>

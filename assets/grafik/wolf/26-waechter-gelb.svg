@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" role="img" aria-label="sidequest Wolf, Variante 26-waechter, gelb"><title>sidequest Wolf, Variante 26-waechter, gelb</title><defs><mask id="w26-m-gelb" maskUnits="userSpaceOnUse" x="0" y="0" width="120" height="120">
+<rect width="120" height="120" fill="#fff"/>
+<path d="M84.5 32 Q87.2 30.2 89.8 31.3 Q87.2 33.2 84.5 32 Z" fill="#000"/>
+<path d="M64.5 12.5 L68.5 22 M73 80 L73 103 M38 103 C40 92 48 85 58 87 M38 108 C58 104.5 76 105.5 95 101.5" fill="none" stroke="#000" stroke-width="2.2" stroke-linecap="round"/>
+</mask></defs>
+<path mask="url(#w26-m-gelb)" d="M64 7 L73 25 C77 25 81 27 84 29 L96 32 C99 33 99 37 96 38 L85 42 C81 44 78 46 77 49 C80 51 80 54 78 56 C81 58 81 61 79 63 C81 66 80 70 80 76 L80 102 C86 99 94 98 98 101 C102 104 100 112 92 114 L32 114 C26 114 24 108 25 102 C26 92 30 84 36 76 C42 66 46 52 52 38 C54 31 56 25 58 21 Z" fill="#172238" stroke="#172238" stroke-width="1.6" stroke-linejoin="round"/></svg>

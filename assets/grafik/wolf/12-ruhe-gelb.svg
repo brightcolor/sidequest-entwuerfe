@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" role="img" aria-label="sidequest Wolf, Variante 12-ruhe, gelb"><title>sidequest Wolf, Variante 12-ruhe, gelb</title><defs><mask id="w12-m-gelb" maskUnits="userSpaceOnUse" x="0" y="0" width="120" height="120">
+<rect width="120" height="120" fill="#fff"/>
+<path d="M38 56.5 Q44 61 50 56.5 M70 56.5 Q76 61 82 56.5 M36 22 L45 36 M84 22 L75 36" fill="none" stroke="#000" stroke-width="3.2" stroke-linecap="round"/>
+</mask></defs>
+<path mask="url(#w12-m-gelb)" d="M60 31 C64 31 68 32 71 34 L83.5 12.5 Q86 9 88 13 L99 44 C105 51 109 59 110 67 L104 70 C106 76 105 82 101 87 C92 99 76 108 60 116 C44 108 28 99 19 87 C15 82 14 76 16 70 L10 67 C11 59 15 51 21 44 L32 13 Q34 9 36.5 12.5 L49 34 C52 32 56 31 60 31 Z" fill="#172238" stroke="#172238" stroke-width="2" stroke-linejoin="round"/>
+<path d="M22 73 C33 67 45 66 54 64.5 Q60 63 66 64.5 C75 66 87 67 98 73 C99 79 97 85 93 90 C86 98 74 105 60 110 C46 105 34 98 27 90 C23 85 21 79 22 73 Z" fill="#FFFFFF"/>
+<path d="M53 95 Q60 92 67 95 Q64 102 60 103 Q56 102 53 95 Z" fill="#172238"/>
+<path d="M60 103 L60 107.5" fill="none" stroke="#172238" stroke-width="2.6" stroke-linecap="round"/></svg>

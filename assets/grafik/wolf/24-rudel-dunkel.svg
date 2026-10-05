@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" role="img" aria-label="sidequest Wolf, Variante 24-rudel, dunkel"><title>sidequest Wolf, Variante 24-rudel, dunkel</title><defs><clipPath id="w24-c-dunkel"><rect x="0" y="0" width="120" height="91"/></clipPath>
+<mask id="w24-auge-dunkel" maskUnits="userSpaceOnUse" x="0" y="0" width="140" height="140">
+<rect width="140" height="140" fill="#fff"/>
+<path d="M67 51.5 Q72 48 77.5 50.3 Q72.5 53.5 67 51.5 Z" fill="#000"/>
+<path d="M47.5 28 L53 36" fill="none" stroke="#000" stroke-width="3.4" stroke-linecap="round"/>
+</mask></defs>
+<g clip-path="url(#w24-c-dunkel)"><g transform="matrix(.6 0 0 .6 -9.2 17.4)"><path mask="url(#w24-auge-dunkel)" d="M34 122 C30 100 29 80 34 64 C36 56 38 50 41 45 L44 24 Q45 19 49 22 L58 37 C64 37 70 39 74 43 C77 46 80 48 84 49 L100 54 C105 55.5 108 59 107 63 C106 67 102 68.5 98 69 L89 70.5 C85 75 80 79 74 81 C71 84 70 87 70 90 C73 92 75 95 72 98 C70 99 69 101 70 103 C72 106 71 109 67 111 C66 114 66 118 66 122 Z" fill="#E8EDF5" stroke="#E8EDF5" stroke-width="2.4" stroke-linejoin="round"/></g>
+<g transform="matrix(-.6 0 0 .6 129.2 17.4)"><path mask="url(#w24-auge-dunkel)" d="M34 122 C30 100 29 80 34 64 C36 56 38 50 41 45 L44 24 Q45 19 49 22 L58 37 C64 37 70 39 74 43 C77 46 80 48 84 49 L100 54 C105 55.5 108 59 107 63 C106 67 102 68.5 98 69 L89 70.5 C85 75 80 79 74 81 C71 84 70 87 70 90 C73 92 75 95 72 98 C70 99 69 101 70 103 C72 106 71 109 67 111 C66 114 66 118 66 122 Z" fill="#E8EDF5" stroke="#E8EDF5" stroke-width="2.4" stroke-linejoin="round"/></g></g>
+<path d="M60 37 L65.5 43.5 L60 50 L54.5 43.5 Z" fill="#F2B230"/>
+<path d="M8 96 L112 96" fill="none" stroke="#E8EDF5" stroke-width="2.6" stroke-linecap="round"/></svg>

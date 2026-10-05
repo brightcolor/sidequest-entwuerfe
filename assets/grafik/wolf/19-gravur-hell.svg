@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" role="img" aria-label="sidequest Wolf, Variante 19-gravur, hell"><title>sidequest Wolf, Variante 19-gravur, hell</title><defs>
+<clipPath id="w19-unten-hell"><circle cx="56" cy="26" r="80"/></clipPath>
+<clipPath id="w19-c-hell"><path d="M34 122 C30 100 29 80 34 64 C36 56 38 50 41 45 L44 24 Q45 19 49 22 L58 37 C64 37 70 39 74 43 C77 46 80 48 84 49 L100 54 C105 55.5 108 59 107 63 C106 67 102 68.5 98 69 L89 70.5 C85 75 80 79 74 81 C71 84 70 87 70 90 C73 92 75 95 72 98 C70 99 69 101 70 103 C72 106 71 109 67 111 C66 114 66 118 66 122 Z"/></clipPath>
+<mask id="w19-m-hell" maskUnits="userSpaceOnUse" x="0" y="0" width="120" height="120">
+<rect width="120" height="120" fill="#fff"/>
+<ellipse cx="72.2" cy="50.8" rx="6.6" ry="3.6" fill="#000"/>
+</mask>
+</defs>
+<g clip-path="url(#w19-unten-hell)"><g clip-path="url(#w19-c-hell)" mask="url(#w19-m-hell)" fill="#172238">
+<rect x="0" y="14" width="120" height="1"/><rect x="0" y="18" width="120" height="1.07"/><rect x="0" y="22" width="120" height="1.14"/><rect x="0" y="26" width="120" height="1.21"/><rect x="0" y="30" width="120" height="1.28"/><rect x="0" y="34" width="120" height="1.35"/><rect x="0" y="38" width="120" height="1.42"/><rect x="0" y="42" width="120" height="1.48"/><rect x="0" y="46" width="120" height="1.55"/><rect x="0" y="50" width="120" height="1.62"/><rect x="0" y="54" width="120" height="1.69"/><rect x="0" y="58" width="120" height="1.76"/><rect x="0" y="62" width="120" height="1.83"/><rect x="0" y="66" width="120" height="1.9"/><rect x="0" y="70" width="120" height="1.97"/><rect x="0" y="74" width="120" height="2.04"/><rect x="0" y="78" width="120" height="2.11"/><rect x="0" y="82" width="120" height="2.18"/><rect x="0" y="86" width="120" height="2.25"/><rect x="0" y="90" width="120" height="2.32"/><rect x="0" y="94" width="120" height="2.38"/><rect x="0" y="98" width="120" height="2.45"/><rect x="0" y="102" width="120" height="2.52"/>
+</g></g>
+<path clip-path="url(#w19-unten-hell)" d="M34 122 C30 100 29 80 34 64 C36 56 38 50 41 45 L44 24 Q45 19 49 22 L58 37 C64 37 70 39 74 43 C77 46 80 48 84 49 L100 54 C105 55.5 108 59 107 63 C106 67 102 68.5 98 69 L89 70.5 C85 75 80 79 74 81 C71 84 70 87 70 90 C73 92 75 95 72 98 C70 99 69 101 70 103 C72 106 71 109 67 111 C66 114 66 118 66 122" fill="none" stroke="#172238" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M67 51.5 Q72 48 77.5 50.3 Q72.5 53.5 67 51.5 Z" fill="#172238"/>
+<ellipse cx="104.6" cy="59.6" rx="3.4" ry="3" fill="#172238"/></svg>

@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" role="img" aria-label="sidequest Wolf, Variante 28-unterwegs, hell"><title>sidequest Wolf, Variante 28-unterwegs, hell</title><defs><mask id="w28-m-hell" maskUnits="userSpaceOnUse" x="0" y="0" width="120" height="120">
+<rect width="120" height="120" fill="#fff"/>
+<path d="M96.5 38.6 Q99.5 36.8 102.5 38 Q99.5 40 96.5 38.6 Z" fill="#000"/>
+<path d="M88.8 25 L91.4 33" fill="none" stroke="#000" stroke-width="2" stroke-linecap="round"/>
+</mask></defs>
+<g fill="#3A4866" stroke="#3A4866" stroke-width="1.4" stroke-linejoin="round">
+<path d="M79 70 L84 70 L95 95 C96 97 94 98 92 98 L89 98 Z"/>
+<path d="M44 70 L50 72 L53 95 C53 97 51 98 49 98 L46 98 Z"/>
+</g>
+<path d="M30 49 C21 53 16 63 16 75 C16 79 20 80 22 77 C24 69 27 61 34 55 Z" fill="#172238" stroke="#172238" stroke-width="1.4" stroke-linejoin="round"/>
+<path mask="url(#w28-m-hell)" d="M88 18 L94 32 C97 33 100 35 102 37 L112 41 C115 42 115 46 112 47 L103 49 C99 51 96 53 94 56 C91 60 89 64 88 68 L87 95 C87 97 85 98 83 98 L80 98 L80 74 C72 72 62 71 54 71 C50 74 47 79 46 85 L44 95 C44 97 42 98 40 98 L37 98 L38 86 C33 80 30 72 30 64 C29 58 29 53 30 49 C42 44 58 43 72 40 C77 38 81 35 83 31 L84 29 Z" fill="#172238" stroke="#172238" stroke-width="1.4" stroke-linejoin="round"/>
+<path d="M8 106 L96 106" fill="none" stroke="#172238" stroke-width="2.6" stroke-linecap="round" stroke-dasharray=".1 6.5"/>
+<path d="M108 100 L114 106 L108 112 L102 106 Z" fill="#F2B230"/></svg>

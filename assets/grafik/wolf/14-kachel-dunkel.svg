@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" role="img" aria-label="sidequest Wolf, Variante 14-kachel, dunkel"><title>sidequest Wolf, Variante 14-kachel, dunkel</title><defs><mask id="w14-m-dunkel" maskUnits="userSpaceOnUse" x="0" y="0" width="120" height="120">
+<rect width="120" height="120" fill="#fff"/>
+<path d="M37 64 Q44 58.5 51 64.5 Q44 67.5 37 64 Z M83 64 Q76 58.5 69 64.5 Q76 67.5 83 64 Z" fill="#000"/>
+<path d="M53 94 Q60 91 67 94 Q64 101 60 102 Q56 101 53 94 Z" fill="#000"/>
+<path d="M51 71 C51 81 52 88 55 93 M69 71 C69 81 68 88 65 93 M60 102 L60 107 M32 19 L43 36 M88 19 L77 36" fill="none" stroke="#000" stroke-width="3.2" stroke-linecap="round"/>
+</mask></defs>
+<g mask="url(#w14-m-dunkel)" fill="#E8EDF5" stroke="#E8EDF5" stroke-width="4" stroke-linejoin="round">
+<rect x="14" y="34" width="92" height="80" rx="26"/>
+<polygon points="18,54 31,9 54,36"/>
+<polygon points="102,54 89,9 66,36"/>
+</g></svg>

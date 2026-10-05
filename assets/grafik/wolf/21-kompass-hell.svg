@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" role="img" aria-label="sidequest Wolf, Variante 21-kompass, hell"><title>sidequest Wolf, Variante 21-kompass, hell</title><circle cx="60" cy="60" r="51" fill="none" stroke="#172238" stroke-width="1.6"/>
+<path d="M96 24 L99.5 20.5 M24 24 L20.5 20.5 M96 96 L99.5 99.5 M24 96 L20.5 99.5" fill="none" stroke="#172238" stroke-width="1.6" stroke-linecap="round"/>
+<g stroke-width=".8" stroke-linejoin="round">
+<polygon points="60,60 46,46 47,6 60,24" fill="#3A4866" stroke="#3A4866"/>
+<polygon points="60,60 60,24 73,6 74,46" fill="#172238" stroke="#172238"/>
+<polygon points="60,60 74,46 114,60" fill="#3A4866" stroke="#3A4866"/>
+<polygon points="60,60 114,60 74,74" fill="#172238" stroke="#172238"/>
+<polygon points="60,60 74,74 60,116" fill="#3A4866" stroke="#3A4866"/>
+<polygon points="60,60 60,116 46,74" fill="#172238" stroke="#172238"/>
+<polygon points="60,60 46,74 6,60" fill="#3A4866" stroke="#3A4866"/>
+<polygon points="60,60 6,60 46,46" fill="#172238" stroke="#172238"/>
+</g>
+<path d="M44 52 Q50 48 56 52.5 Q50 55 44 52 Z M76 52 Q70 48 64 52.5 Q70 55 76 52 Z" fill="#F2B230"/></svg>
